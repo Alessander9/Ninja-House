@@ -1,0 +1,258 @@
+{
+  "talents": [
+    {
+      "id": "charrita-peruana",
+      "name": "Charrita Peruana",
+      "program": "animes-y-ramen",
+      "role": "Co-Host",
+      "socials": {
+        "instagram": "charritaperu",
+        "tiktok": "charritaperu",
+        "youtube": "charritaperu",
+        "custom_link": "bit.ly/charritaperu"
+      },
+      "links": {
+        "profile_shortlink": "bit.ly/charritaperu",
+        "instagram": "https://instagram.com/charritaperu",
+        "youtube": "https://youtube.com/@charritaperu",
+        "tiktok": "https://tiktok.com/@charritaperu"
+      }
+    },
+    {
+      "id": "ale-romero",
+      "name": "Ale Romero",
+      "program": "animes-y-ramen",
+      "role": "Co-Host",
+      "socials": {
+        "instagram": "aleromeroi",
+        "tiktok": "aleromeroi",
+        "youtube": "aleromeroi",
+        "custom_link": "bit.ly/aleromeroi"
+      },
+      "links": {
+        "profile_shortlink": "bit.ly/aleromeroi",
+        "instagram": "https://instagram.com/aleromeroi",
+        "youtube": "https://youtube.com/@aleromeroi",
+        "tiktok": "https://tiktok.com/@aleromeroi"
+      }
+    },
+    {
+      "id": "goncho-iglesias",
+      "name": "Goncho Iglesias",
+      "program": "lanzalo",
+      "role": "Dungeon Master",
+      "socials": {
+        "instagram": "gonchoiglesias",
+        "tiktok": "gonchoiglesias",
+        "youtube": "gonchoiglesias"
+      },
+      "links": {
+        "profile_shortlink": "https://goo.su/8n9Pvf",
+        "instagram": "https://instagram.com/gonchoiglesias",
+        "youtube": "https://youtube.com/@gonchoiglesias",
+        "tiktok": "https://tiktok.com/@gonchoiglesias"
+      }
+    },
+    {
+      "id": "luciana-roy",
+      "name": "Luciana Roy",
+      "program": "lanzalo",
+      "role": "Jugadora",
+      "socials": {
+        "instagram": "lucianaroy",
+        "tiktok": "lucianaroy",
+        "youtube": "lucianaroy"
+      },
+      "links": {
+        "profile_shortlink": "https://goo.su/cFmWH",
+        "instagram": "https://instagram.com/lucianaroy",
+        "youtube": "https://youtube.com/@lucianaroy",
+        "tiktok": "https://tiktok.com/@lucianaroy"
+      }
+    },
+    {
+      "id": "jeanphil",
+      "name": "JeanPhil",
+      "program": "lanzalo",
+      "role": "Jugador",
+      "socials": {
+        "instagram": "jeanphilofficial",
+        "tiktok": "jeanphilofficial",
+        "youtube": "jeanphilofficial"
+      },
+      "links": {
+        "profile_shortlink": "https://goo.su/aPdgd",
+        "instagram": "https://instagram.com/jeanphilofficial",
+        "youtube": "https://youtube.com/@jeanphilofficial",
+        "tiktok": "https://tiktok.com/@jeanphilofficial"
+      }
+    },
+    {
+      "id": "jose-klauer",
+      "name": "Jose Klauer",
+      "program": "lanzalo",
+      "role": "Jugador",
+      "socials": {
+        "instagram": "joseklauer",
+        "tiktok": "joseklauer",
+        "youtube": "joseklauer"
+      },
+      "links": {
+        "profile_shortlink": "https://goo.su/pgpm",
+        "instagram": "https://instagram.com/joseklauer",
+        "youtube": "https://youtube.com/@joseklauer",
+        "tiktok": "https://tiktok.com/@joseklauer"
+      }
+    },
+    {
+      "id": "gonzalo-heredia",
+      "name": "Gonzalo Heredia",
+      "program": "lanzalo",
+      "role": "Jugador",
+      "socials": {
+        "instagram": "gonzaloheredia",
+        "tiktok": "gonzaloheredia",
+        "youtube": "gonzaloheredia"
+      },
+      "links": {
+        "profile_shortlink": "https://goo.su/Q02y",
+        "instagram": "https://instagram.com/gonzaloheredia",
+        "youtube": "https://youtube.com/@gonzaloheredia",
+        "tiktok": "https://tiktok.com/@gonzaloheredia"
+      }
+    }
+  ],
+  "programs_with_talent_links": [
+    {
+      "id": "animes-y-ramen",
+      "name": "Animes y Ramen",
+      "talents": [
+        {
+          "name": "Charrita Peruana",
+          "profile_link": "bit.ly/charritaperu",
+          "instagram": "https://instagram.com/charritaperu"
+        },
+        {
+          "name": "Ale Romero",
+          "profile_link": "bit.ly/aleromeroi",
+          "instagram": "https://instagram.com/aleromeroi"
+        }
+      ]
+    },
+    {
+      "id": "frecuencia-h",
+      "name": "Frecuencia H",
+      "talents": [
+        {
+          "name": "Host 1",
+          "profile_link": "No disponible en media kit",
+          "instagram": "No disponible"
+        },
+        {
+          "name": "Host 2",
+          "profile_link": "No disponible en media kit",
+          "instagram": "No disponible"
+        },
+        {
+          "name": "Host 3",
+          "profile_link": "No disponible en media kit",
+          "instagram": "No disponible"
+        }
+      ]
+    },
+    {
+      "id": "maldito-plastico",
+      "name": "Maldito Plástico",
+      "talents": [
+        {
+          "name": "Host 1",
+          "profile_link": "No disponible en media kit",
+          "instagram": "No disponible"
+        },
+        {
+          "name": "Host 2",
+          "profile_link": "No disponible en media kit",
+          "instagram": "No disponible"
+        },
+        {
+          "name": "Host 3",
+          "profile_link": "No disponible en media kit",
+          "instagram": "No disponible"
+        }
+      ]
+    },
+    {
+      "id": "cine-infarto",
+      "name": "Cine Infarto",
+      "talents": [
+        {
+          "name": "Host 1",
+          "profile_link": "No disponible en media kit",
+          "instagram": "No disponible"
+        },
+        {
+          "name": "Host 2",
+          "profile_link": "No disponible en media kit",
+          "instagram": "No disponible"
+        }
+      ]
+    },
+    {
+      "id": "overhead",
+      "name": "Overhead",
+      "talents": [
+        {
+          "name": "Host 1",
+          "profile_link": "No disponible en media kit",
+          "instagram": "No disponible"
+        },
+        {
+          "name": "Host 2",
+          "profile_link": "No disponible en media kit",
+          "instagram": "No disponible"
+        },
+        {
+          "name": "Host 3",
+          "profile_link": "No disponible en media kit",
+          "instagram": "No disponible"
+        }
+      ]
+    },
+    {
+      "id": "lanzalo",
+      "name": "Lanzalo",
+      "talents": [
+        {
+          "name": "Goncho Iglesias",
+          "role": "Dungeon Master",
+          "profile_link": "https://goo.su/8n9Pvf",
+          "instagram": "https://instagram.com/gonchoiglesias"
+        },
+        {
+          "name": "Luciana Roy",
+          "role": "Jugadora",
+          "profile_link": "https://goo.su/cFmWH",
+          "instagram": "https://instagram.com/lucianaroy"
+        },
+        {
+          "name": "JeanPhil",
+          "role": "Jugador",
+          "profile_link": "https://goo.su/aPdgd",
+          "instagram": "https://instagram.com/jeanphilofficial"
+        },
+        {
+          "name": "Jose Klauer",
+          "role": "Jugador",
+          "profile_link": "https://goo.su/pgpm",
+          "instagram": "https://instagram.com/joseklauer"
+        },
+        {
+          "name": "Gonzalo Heredia",
+          "role": "Jugador",
+          "profile_link": "https://goo.su/Q02y",
+          "instagram": "https://instagram.com/gonzaloheredia"
+        }
+      ]
+    }
+  ]
+}

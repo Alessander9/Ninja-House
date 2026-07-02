@@ -1,0 +1,297 @@
+{
+  "programs": [
+    {
+      "id": "animes-y-ramen",
+      "name": "Animes y Ramen",
+      "description": "Programa dedicado al anime, manga y cultura japonesa, con reviews, debates y noticias para una comunidad otaku que vive el anime más allá de la pantalla. Referentes del mundo geek, generando conversación en vivo y alto engagement.",
+      "schedule": "Lunes 9-11 PM",
+      "day": "monday",
+      "startTime": "21:00",
+      "endTime": "23:00",
+      "audience": "Hombres y Mujeres 18-45 años",
+      "ageRange": {
+        "min": 18,
+        "max": 45
+      },
+      "talents": [
+        {
+          "id": "charrita-peruana",
+          "name": "Charrita peruana",
+          "social": "bit.ly/charritaperu",
+          "role": "Co-host"
+        },
+        {
+          "id": "ale-romero",
+          "name": "Ale Romero",
+          "social": "bit.ly/aleromeroi",
+          "role": "Co-host"
+        }
+      ],
+      "colors": {
+        "primary": "#7C3AED",
+        "secondary": "#E5B8D0",
+        "background": "#FFF0F6"
+      },
+      "logo": {
+        "type": "circle",
+        "text": "ANIMES",
+        "shape": "circle",
+        "icon": "ramen"
+      },
+      "themes": ["anime", "manga", "cultura-japonesa", "otaku"],
+      "engagement": "Alto",
+      "status": "active"
+    },
+    {
+      "id": "overhead",
+      "name": "Overhead",
+      "description": "Programa de entretenimiento y análisis de videojuegos, películas y cultura gaming con debate en vivo.",
+      "schedule": "Viernes 9-11 PM",
+      "day": "friday",
+      "startTime": "21:00",
+      "endTime": "23:00",
+      "audience": "Gamers y Fans de Entretenimiento",
+      "talents": [
+        {
+          "id": "host-1",
+          "name": "Host 1",
+          "role": "Presentador"
+        },
+        {
+          "id": "host-2",
+          "name": "Host 2",
+          "role": "Presentador"
+        },
+        {
+          "id": "host-3",
+          "name": "Host 3",
+          "role": "Presentador"
+        }
+      ],
+      "colors": {
+        "primary": "#2563EB",
+        "secondary": "#EF4444",
+        "background": "#F3F4F6"
+      },
+      "logo": {
+        "type": "text",
+        "text": "OVERHEAD",
+        "style": "bold",
+        "icon": "hitman"
+      },
+      "themes": ["videojuegos", "gaming", "entretenimiento"],
+      "presenters": 3,
+      "status": "active"
+    },
+    {
+      "id": "freakuencia-m",
+      "name": "Freakuencia M",
+      "description": "Programa de entretenimiento con análisis de cultura pop, tendencias y conversación dinámica.",
+      "schedule": "Miércoles 9-11 PM",
+      "day": "wednesday",
+      "startTime": "21:00",
+      "endTime": "23:00",
+      "audience": "Audiencia General 18-45 años",
+      "talents": [
+        {
+          "id": "host-1",
+          "name": "Host 1",
+          "role": "Presentador"
+        },
+        {
+          "id": "host-2",
+          "name": "Host 2",
+          "role": "Presentador"
+        },
+        {
+          "id": "host-3",
+          "name": "Host 3",
+          "role": "Presentador"
+        }
+      ],
+      "colors": {
+        "primary": "#16A34A",
+        "secondary": "#FB923C",
+        "background": "#F0FDF4"
+      },
+      "logo": {
+        "type": "icon",
+        "icon": "microphone",
+        "color": "green"
+      },
+      "themes": ["entretenimiento", "cultura-pop", "conversacion"],
+      "presenters": 3,
+      "characteristicColors": ["pink", "orange", "green"],
+      "status": "active"
+    },
+    {
+      "id": "maldito-plastico",
+      "name": "Maldito Plástico",
+      "description": "Programa dedicado a coleccionables, acción figures y cultura de juguetes. Análisis, reviews y conversación con la comunidad de coleccionistas.",
+      "schedule": "Jueves 9-10 PM",
+      "day": "thursday",
+      "startTime": "21:00",
+      "endTime": "22:00",
+      "audience": "Coleccionistas y Fans de Acción Figures",
+      "talents": [
+        {
+          "id": "host-1",
+          "name": "Host 1",
+          "role": "Presentador"
+        },
+        {
+          "id": "host-2",
+          "name": "Host 2",
+          "role": "Presentador"
+        },
+        {
+          "id": "host-3",
+          "name": "Host 3",
+          "role": "Presentador"
+        }
+      ],
+      "colors": {
+        "primary": "#EA580C",
+        "secondary": "#FFFFFF",
+        "background": "#FEF3C7"
+      },
+      "logo": {
+        "type": "text",
+        "text": "MALDITO PLÁSTICO",
+        "color": "orange",
+        "style": "bold"
+      },
+      "themes": ["coleccionables", "accion-figures", "juguetes", "toys"],
+      "presenters": 3,
+      "characteristicColors": ["red", "green", "pink"],
+      "status": "active"
+    },
+    {
+      "id": "cine-infarto",
+      "name": "Cine Infarto",
+      "description": "Programa de cine y películas con reviews, análisis cinematográfico y recomendaciones para cinéfilos.",
+      "schedule": "Viernes 5-7 PM",
+      "day": "friday",
+      "startTime": "17:00",
+      "endTime": "19:00",
+      "audience": "Cinéfilos 20-50 años",
+      "ageRange": {
+        "min": 20,
+        "max": 50
+      },
+      "talents": [
+        {
+          "id": "host-1",
+          "name": "Host 1",
+          "role": "Presentador"
+        },
+        {
+          "id": "host-2",
+          "name": "Host 2",
+          "role": "Presentador"
+        }
+      ],
+      "colors": {
+        "primary": "#DC2626",
+        "secondary": "#FEC5D0",
+        "background": "#FEF2F2"
+      },
+      "logo": {
+        "type": "icon",
+        "icon": "film-camera",
+        "color": "red"
+      },
+      "themes": ["cine", "películas", "cinematografía", "reviews"],
+      "presenters": 2,
+      "style": "sophisticated",
+      "status": "active"
+    },
+    {
+      "id": "lanzalo",
+      "name": "Lanzalo",
+      "description": "Programa de Calabozos y Dragones (D&D) jugado en vivo con participación del público. Combina rol, creatividad y entretenimiento geek. La audiencia es parte activa de la aventura.",
+      "schedule": "Domingo 9-11 PM",
+      "day": "sunday",
+      "startTime": "21:00",
+      "endTime": "23:00",
+      "audience": "Hombres y Mujeres 25-50 años",
+      "ageRange": {
+        "min": 25,
+        "max": 50
+      },
+      "talents": [
+        {
+          "id": "goncho-iglesias",
+          "name": "Goncho Iglesias",
+          "role": "Dungeon Master"
+        },
+        {
+          "id": "luciana-roy",
+          "name": "Luciana Roy",
+          "role": "Jugadora"
+        },
+        {
+          "id": "jeanphil",
+          "name": "JeanPhil",
+          "role": "Jugador"
+        },
+        {
+          "id": "jose-klauer",
+          "name": "Jose Klauer",
+          "role": "Jugador"
+        },
+        {
+          "id": "gonzalo-heredia",
+          "name": "Gonzalo Heredia",
+          "role": "Jugador"
+        }
+      ],
+      "colors": {
+        "primary": "#E11D48",
+        "secondary": "#FFB5D0",
+        "background": "#FEF3F7"
+      },
+      "logo": {
+        "type": "text",
+        "text": "LANZALO",
+        "color": "red",
+        "style": "bold",
+        "icon": "dice"
+      },
+      "themes": ["dungeon-dragons", "D&D", "juego-rol", "fantasia"],
+      "presenters": 5,
+      "interactive": true,
+      "audienceParticipation": true,
+      "status": "active"
+    }
+  ],
+  "brandColors": {
+    "primary": "#E63946",
+    "primaryLight": "#F1FAEE",
+    "primaryDark": "#A4161A",
+    "accentPink": "#FFB3BA",
+    "accentPinkLight": "#FFE5E9",
+    "accentPinkPale": "#FFF0F3",
+    "white": "#FFFFFF",
+    "black": "#1A1A1A",
+    "gray100": "#F5F5F5",
+    "gray300": "#E0E0E0",
+    "gray500": "#999999",
+    "gray700": "#333333",
+    "gray900": "#1A1A1A"
+  },
+  "metadata": {
+    "totalPrograms": 6,
+    "totalTalents": 15,
+    "broadcastDays": ["monday", "wednesday", "thursday", "friday", "sunday"],
+    "contact": "Contacto@ninjahouseshow.com",
+    "followers": {
+      "total": "165000+",
+      "youtube": "subscribers",
+      "tiktok": "followers",
+      "instagram": "followers",
+      "facebook": "followers"
+    },
+    "lastUpdated": "2026-06-29"
+  }
+}
