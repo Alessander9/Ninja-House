@@ -12,7 +12,6 @@ import { AboutSection } from './components/about/AboutSection'
 import { LiveNowSection } from './components/live/LiveNowSection'
 // import { CollectiblesSection } from './components/collectibles/CollectiblesSection'
 import { ProgramsSection } from './components/programs/ProgramsSection'
-import { InvestSection } from './components/invest/InvestSection'
 import { MetricsSection } from './components/metrics/MetricsSection'
 // import { TalentsSection } from './components/talents/TalentsSection'
 import { SocialSection } from './components/social/SocialSection'
@@ -21,26 +20,35 @@ import { ContactSection } from './components/contact/ContactSection'
 
 // Pages
 import { ProgramsPage } from './pages/ProgramsPage'
-import { InvestPage } from './pages/InvestPage'
 import { ContactPage } from './pages/ContactPage'
-import { MediaKitPage } from './pages/MediaKitPage'
 import { ProgramDetailPage } from './components/programs/ProgramDetailPage'
+import { WhatsAppButton } from './components/ui/WhatsAppButton'
 
-// Helper component to scroll to top on route change
+// Helper component to scroll to top or anchor with Lenis
 function ScrollToTop() {
   const { pathname, hash } = useLocation()
   useEffect(() => {
+    const lenis = (window as any).lenis
     // If navigating to an anchor link on home
     if (hash) {
       const element = document.getElementById(hash.substring(1))
       if (element) {
         setTimeout(() => {
-          element.scrollIntoView({ behavior: 'smooth' })
-        }, 100)
+          if (lenis) {
+            lenis.scrollTo(element, { offset: -60, duration: 1.2 })
+          } else {
+            element.scrollIntoView({ behavior: 'smooth' })
+          }
+        }, 120)
         return
       }
     }
-    window.scrollTo(0, 0)
+    
+    if (lenis) {
+      lenis.scrollTo(0, { immediate: true })
+    } else {
+      window.scrollTo(0, 0)
+    }
   }, [pathname, hash])
   return null
 }
@@ -63,9 +71,6 @@ function LandingPage() {
       <div className="h-px bg-gradient-to-r from-transparent via-red-700/20 to-transparent" />
       <CollectiblesSection />
       */}
-
-      <div className="h-px bg-gradient-to-r from-transparent via-red-600/20 to-transparent" />
-      <InvestSection />
 
       <div className="h-px bg-gradient-to-r from-transparent via-red-700/20 to-transparent" />
       <MetricsSection />
@@ -107,12 +112,11 @@ function AppContent() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/programa/:id" element={<ProgramDetailPage />} />
           <Route path="/programas" element={<ProgramsPage />} />
-          <Route path="/invierte" element={<InvestPage />} />
           <Route path="/contacto" element={<ContactPage />} />
-          <Route path="/media-kit" element={<MediaKitPage />} />
         </Routes>
       </main>
       <Footer />
+      <WhatsAppButton />
     </div>
   )
 }

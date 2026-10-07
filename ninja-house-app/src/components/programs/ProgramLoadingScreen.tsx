@@ -18,14 +18,28 @@ export function ProgramLoadingScreen({ isVisible, program, theme }: ProgramLoadi
       {isVisible && (
         <motion.div
           key={`${program.id}-loading`}
-          initial={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: reducedMotion ? 0.12 : 0.45, ease: 'easeOut' }}
+          initial={{ y: 0, opacity: 1 }}
+          exit={{
+            y: '100%',
+            transition: {
+              duration: reducedMotion ? 0.15 : 0.85,
+              ease: [0.76, 0, 0.24, 1],
+            }
+          }}
           className="fixed inset-0 z-[9998] flex items-center justify-center overflow-hidden"
           style={{
             background: theme.gradient,
           }}
         >
+          {/* Top Curtain Edge Light */}
+          <div
+            className="absolute top-0 left-0 right-0 h-[2px] pointer-events-none z-50"
+            style={{
+              background: `linear-gradient(90deg, transparent, ${theme.primary}, transparent)`,
+              boxShadow: `0 0 20px ${theme.primary}`
+            }}
+          />
+
           <ProgramMotifs programId={program.id} theme={theme} variant="compact" />
 
           <div
@@ -47,8 +61,8 @@ export function ProgramLoadingScreen({ isVisible, program, theme }: ProgramLoadi
             className="relative z-10 w-full max-w-2xl px-6 text-center"
             initial={reducedMotion ? { opacity: 1 } : { opacity: 0, y: 14 }}
             animate={reducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
-            exit={reducedMotion ? { opacity: 0 } : { opacity: 0, y: -8 }}
-            transition={{ duration: 0.35, ease: 'easeOut' }}
+            exit={reducedMotion ? { opacity: 0 } : { opacity: 0, y: -40, scale: 0.95 }}
+            transition={{ duration: 0.45, ease: 'easeOut' }}
           >
             <motion.div
               className="flex justify-center"
@@ -56,18 +70,18 @@ export function ProgramLoadingScreen({ isVisible, program, theme }: ProgramLoadi
                 reducedMotion
                   ? undefined
                   : {
-                      y: [0, -5, 0],
+                      y: [0, -6, 0],
                       scale: [1, 1.04, 1],
                     }
               }
               transition={{ duration: 2.6, repeat: Infinity, ease: 'easeInOut' }}
             >
               <motion.div
-                className="relative w-28 h-28 rounded-2xl overflow-hidden border"
+                className="relative w-36 h-36 md:w-44 md:h-44 rounded-3xl overflow-hidden border p-4 backdrop-blur-md"
                 style={{
-                  borderColor: `${theme.primary}40`,
-                  boxShadow: `0 0 0 1px ${theme.primary}22, 0 18px 48px rgba(0,0,0,0.45)`,
-                  background: 'rgba(10,10,10,0.65)',
+                  borderColor: `${theme.primary}55`,
+                  boxShadow: `0 0 0 1px ${theme.primary}33, 0 24px 60px rgba(0,0,0,0.6), 0 0 40px ${theme.primary}33`,
+                  background: 'rgba(10,10,10,0.75)',
                 }}
                 animate={
                   reducedMotion
@@ -75,9 +89,9 @@ export function ProgramLoadingScreen({ isVisible, program, theme }: ProgramLoadi
                     : {
                         rotate: [0, -2, 2, 0],
                         boxShadow: [
-                          `0 0 0 1px ${theme.primary}22, 0 18px 48px rgba(0,0,0,0.45)`,
-                          `0 0 0 1px ${theme.primary}44, 0 18px 60px rgba(0,0,0,0.5)`,
-                          `0 0 0 1px ${theme.primary}22, 0 18px 48px rgba(0,0,0,0.45)`,
+                          `0 0 0 1px ${theme.primary}33, 0 24px 60px rgba(0,0,0,0.6), 0 0 40px ${theme.primary}25`,
+                          `0 0 0 1px ${theme.primary}66, 0 28px 70px rgba(0,0,0,0.7), 0 0 50px ${theme.primary}45`,
+                          `0 0 0 1px ${theme.primary}33, 0 24px 60px rgba(0,0,0,0.6), 0 0 40px ${theme.primary}25`,
                         ],
                       }
                 }
@@ -86,7 +100,7 @@ export function ProgramLoadingScreen({ isVisible, program, theme }: ProgramLoadi
                 <img
                   src={theme.logoPath}
                   alt={`${program.title} logo`}
-                  className="w-full h-full object-contain p-3"
+                  className="w-full h-full object-contain drop-shadow-xl"
                 />
               </motion.div>
             </motion.div>

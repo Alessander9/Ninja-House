@@ -14,12 +14,16 @@ type MotifItem = {
 
 const MOTIFS: Record<string, MotifItem[]> = {
   'animes-y-ramen': [
-    { icon: '🍜', top: '12%', left: '8%', size: 34, delay: 0, duration: 7.2, rotate: -10, opacity: 0.26 },
-    { icon: '🥢', top: '22%', left: '76%', size: 24, delay: 0.6, duration: 8.4, rotate: 16, opacity: 0.20 },
-    { icon: '🏮', top: '64%', left: '12%', size: 28, delay: 0.2, duration: 9, rotate: -6, opacity: 0.18 },
-    { icon: '🌸', top: '68%', left: '79%', size: 22, delay: 0.8, duration: 7.8, rotate: 10, opacity: 0.18 },
-    { icon: '🍥', top: '38%', left: '50%', size: 20, delay: 0.4, duration: 8.8, rotate: 8, opacity: 0.18 },
-    { icon: '✨', top: '16%', left: '50%', size: 18, delay: 0.9, duration: 6.8, rotate: 0, opacity: 0.18 },
+    { icon: '🍜', top: '10%', left: '7%', size: 36, delay: 0, duration: 6.8, rotate: -10, opacity: 0.35 },
+    { icon: '🎧', top: '18%', left: '88%', size: 30, delay: 0.4, duration: 7.6, rotate: 12, opacity: 0.32 },
+    { icon: '🌸', top: '55%', left: '4%', size: 28, delay: 0.8, duration: 8.2, rotate: -8, opacity: 0.30 },
+    { icon: '🧋', top: '78%', left: '86%', size: 32, delay: 0.2, duration: 7.2, rotate: 14, opacity: 0.32 },
+    { icon: '🍙', top: '35%', left: '92%', size: 26, delay: 0.6, duration: 8.6, rotate: -12, opacity: 0.28 },
+    { icon: '🍡', top: '82%', left: '10%', size: 30, delay: 1.0, duration: 7.4, rotate: 8, opacity: 0.30 },
+    { icon: '✨', top: '15%', left: '48%', size: 22, delay: 0.3, duration: 6.2, rotate: 0, opacity: 0.35 },
+    { icon: '🐱', top: '68%', left: '52%', size: 24, delay: 0.7, duration: 8.0, rotate: -6, opacity: 0.28 },
+    { icon: '🎮', top: '42%', left: '6%', size: 26, delay: 0.5, duration: 7.9, rotate: 10, opacity: 0.28 },
+    { icon: '🍥', top: '28%', left: '80%', size: 24, delay: 0.9, duration: 8.4, rotate: -14, opacity: 0.30 },
   ],
   overhead: [
     { icon: '🥊', top: '14%', left: '10%', size: 30, delay: 0, duration: 7.6, rotate: -12, opacity: 0.22 },
@@ -37,6 +41,14 @@ const MOTIFS: Record<string, MotifItem[]> = {
     { icon: '🎛️', top: '40%', left: '48%', size: 20, delay: 0.5, duration: 9.2, rotate: 6, opacity: 0.16 },
     { icon: '✳️', top: '16%', left: '50%', size: 18, delay: 0.9, duration: 6.9, rotate: 0, opacity: 0.16 },
   ],
+  'frikisdem': [
+    { icon: '🎙️', top: '12%', left: '10%', size: 30, delay: 0, duration: 7.1, rotate: -8, opacity: 0.24 },
+    { icon: '⚡', top: '22%', left: '78%', size: 24, delay: 0.4, duration: 8.8, rotate: 10, opacity: 0.22 },
+    { icon: '📱', top: '66%', left: '12%', size: 24, delay: 0.2, duration: 7.8, rotate: -4, opacity: 0.18 },
+    { icon: '💥', top: '70%', left: '80%', size: 22, delay: 0.7, duration: 8.4, rotate: 8, opacity: 0.20 },
+    { icon: '🎮', top: '40%', left: '48%', size: 20, delay: 0.5, duration: 9.2, rotate: 6, opacity: 0.18 },
+    { icon: '📻', top: '16%', left: '50%', size: 18, delay: 0.9, duration: 6.9, rotate: 0, opacity: 0.16 },
+  ],
   'maldito-plastico': [
     { icon: '🧸', top: '12%', left: '10%', size: 32, delay: 0, duration: 7.8, rotate: -8, opacity: 0.24 },
     { icon: '📦', top: '22%', left: '78%', size: 24, delay: 0.4, duration: 8.6, rotate: 10, opacity: 0.20 },
@@ -52,6 +64,14 @@ const MOTIFS: Record<string, MotifItem[]> = {
     { icon: '🔦', top: '70%', left: '78%', size: 22, delay: 0.7, duration: 8.8, rotate: 8, opacity: 0.18 },
     { icon: '⭐', top: '40%', left: '50%', size: 20, delay: 0.5, duration: 9.1, rotate: 4, opacity: 0.16 },
     { icon: '📽️', top: '16%', left: '50%', size: 18, delay: 0.9, duration: 6.9, rotate: 0, opacity: 0.16 },
+  ],
+  'plan-oscuro': [
+    { icon: '🕯️', top: '12%', left: '10%', size: 30, delay: 0, duration: 7.4, rotate: -8, opacity: 0.26 },
+    { icon: '👁️', top: '22%', left: '80%', size: 24, delay: 0.4, duration: 8.6, rotate: 10, opacity: 0.22 },
+    { icon: '🌑', top: '66%', left: '12%', size: 24, delay: 0.2, duration: 7.8, rotate: -4, opacity: 0.24 },
+    { icon: '📜', top: '70%', left: '78%', size: 22, delay: 0.7, duration: 8.8, rotate: 8, opacity: 0.18 },
+    { icon: '🔮', top: '40%', left: '50%', size: 20, delay: 0.5, duration: 9.0, rotate: 4, opacity: 0.20 },
+    { icon: '🦇', top: '16%', left: '48%', size: 18, delay: 0.9, duration: 6.9, rotate: 0, opacity: 0.18 },
   ],
 }
 

@@ -10,19 +10,20 @@ const categories = [
   { label: 'Wrestling', value: 'Wrestling' },
   { label: 'Cultura Pop', value: 'Cultura' },
   { label: 'Coleccionismo', value: 'Coleccionismo' },
-  { label: 'Cine', value: 'Cine' }
+  { label: 'Cine', value: 'Cine' },
+  { label: 'Misterio', value: 'Misterio' }
 ]
 
 // Show-specific color overrides
 const hoverColorMap: Record<string, string> = {
-  'animes-y-ramen': '#7C3AED',     // Morado
-  'overhead': '#2563EB',            // Azul
-  'freakuencia-m': '#16A34A',       // Verde
-  'maldito-plastico': '#EA580C',    // Naranja
-  'cine-infarto': '#DC2626',        // Rojo
+  'animes-y-ramen': '#C6A2E6',
+  'overhead': '#2563EB',
+  'frikisdem': '#16A34A',
+  'freakuencia-m': '#16A34A',
+  'maldito-plastico': '#EA580C',
+  'cine-infarto': '#DC2626',
+  'plan-oscuro': '#9333EA',
 }
-
-const hiddenProgramIds = new Set(['lanzalo'])
 
 export function ProgramsPage() {
   const [selectedCat, setSelectedCat] = useState('all')
@@ -37,18 +38,17 @@ export function ProgramsPage() {
     }
   }, [])
 
-  const availablePrograms = programsData
-    .filter((prog) => !hiddenProgramIds.has(prog.id))
-    .sort((a, b) => a.dayIndex - b.dayIndex)
+  const availablePrograms = [...programsData].sort((a, b) => a.dayIndex - b.dayIndex)
   const filteredPrograms = selectedCat === 'all'
     ? availablePrograms
     : availablePrograms.filter((prog) => {
         const cat = prog.category.toLowerCase()
         if (selectedCat === 'Anime' && cat.includes('anime')) return true
         if (selectedCat === 'Wrestling' && cat.includes('lucha')) return true
-        if (selectedCat === 'Cultura' && cat.includes('cultura pop')) return true
+        if (selectedCat === 'Cultura' && (cat.includes('cultura') || cat.includes('pop') || cat.includes('memes'))) return true
         if (selectedCat === 'Coleccionismo' && cat.includes('coleccionismo')) return true
         if (selectedCat === 'Cine' && cat.includes('cine')) return true
+        if (selectedCat === 'Misterio' && (cat.includes('misterio') || cat.includes('oscuro'))) return true
         return false
       })
 

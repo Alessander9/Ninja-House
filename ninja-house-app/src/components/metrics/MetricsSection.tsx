@@ -2,7 +2,9 @@ import { useEffect, useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { metricsData } from '../../data/metrics'
+import { metricsData as initialMetricsData } from '../../data/metrics'
+import { getCachedSocialMetrics, fetchLiveSocialMetrics } from '../../services/socialMetricsService'
+import type { Metric } from '../../data/metrics'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -69,9 +71,15 @@ function AnimatedCounter({ end, suffix, color }: { end: number; suffix: string; 
     return () => cancelAnimationFrame(raf)
   }, [inView, end])
 
+  const formattedNumber = count >= 1000000
+    ? `${(count / 1000000).toFixed(1)}M`
+    : count >= 10000
+    ? `${(count / 1000).toFixed(count % 1000 === 0 ? 0 : 1)}K`
+    : count.toLocaleString('es-ES')
+
   return (
     <span ref={ref} className="tabular-nums" style={{ color }}>
-      {count}{suffix}
+      {formattedNumber}{suffix}
       <span className="text-2xl">+</span>
     </span>
   )
@@ -79,6 +87,28 @@ function AnimatedCounter({ end, suffix, color }: { end: number; suffix: string; 
 
 export function MetricsSection() {
   const sectionRef = useRef<HTMLDivElement>(null)
+  const [metrics, setMetrics] = useState<Metric[]>(() => {
+    const cached = getCachedSocialMetrics()
+    return cached?.metrics || initialMetricsData
+  })
+  const [isLiveSynced, setIsLiveSynced] = useState(false)
+
+  useEffect(() => {
+    // Sincronización en vivo asíncrona en cliente
+    let isMounted = true
+    fetchLiveSocialMetrics()
+      .then((data) => {
+        if (isMounted && data?.metrics?.length > 0) {
+          setMetrics(data.metrics)
+          setIsLiveSynced(true)
+        }
+      })
+      .catch(() => {})
+
+    return () => {
+      isMounted = false
+    }
+  }, [])
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -119,9 +149,21 @@ export function MetricsSection() {
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Header */}
         <div className="metrics-title text-center mb-20">
-          <span className="inline-block px-4 py-1.5 bg-red-600/10 border border-red-600/30 rounded-full text-red-500 font-display font-bold text-xs tracking-widest mb-4">
-            📊 AUTORIDAD NINJA
-          </span>
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <span className="inline-block px-4 py-1.5 bg-red-600/10 border border-red-600/30 rounded-full text-red-500 font-display font-bold text-xs tracking-widest">
+              📊 AUTORIDAD NINJA
+            </span>
+            {isLiveSynced && (
+              <motion.span
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 rounded-full text-emerald-400 font-display font-bold text-[10px] tracking-wider"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                EN VIVO
+              </motion.span>
+            )}
+          </div>
           <h2 className="font-display font-black text-4xl md:text-5xl text-white mt-2">
             Números que{' '}
             <span className="text-red-500" style={{ textShadow: '0 0 35px rgba(176,26,25,0.45)' }}>
@@ -135,7 +177,7 @@ export function MetricsSection() {
 
         {/* Metrics grid — centered to match the 4 cards */}
         <div className="metrics-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-5xl mx-auto justify-center">
-          {metricsData.map((metric, i) => {
+          {metrics.map((metric, i) => {
             const IconComponent = metricIcons[metric.id]
             return (
               <motion.div
@@ -234,7 +276,7 @@ export function MetricsSection() {
             Únete a la comunidad ninja más grande de la región
           </p>
           <motion.a
-            href="https://www.youtube.com/channel/UCF2hgWHhLQx3ZJDsnKU8gZg"
+            href="https://www.youtube.com/channel/UCF2hgWHhLQx3ZJDsnKU8gZg?sub_confirmation=1"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 px-8 py-4 bg-ninja-green text-ninja-black font-display font-black text-base rounded-xl"

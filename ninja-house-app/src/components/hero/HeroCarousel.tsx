@@ -3,21 +3,36 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { scheduleData, getSmartStatus } from '../../data/schedule'
 import { programLogoMap } from '../../data/programThemes'
 
+// Custom hero artwork for hero carousel slides
+const heroImageMap: Record<string, string> = {
+  'animes-y-ramen': '/assets/heroRamenIndex-removebg-preview.png',
+  'overhead': '/assets/overhead_heroindex.webp',
+  'frikisdem': '/assets/frikism_heroindex.webp',
+  'freakuencia-m': '/assets/frikism_heroindex.webp',
+  'maldito-plastico': '/assets/malditoplastico_heroindex.webp',
+  'cine-infarto': '/assets/cineinfarto_heroindex.webp',
+  // 'plan-oscuro': '/assets/PLAN_OSCURO_LOGO.webp', // Slide de Plano Oscuro comentado
+}
+
 // Build slides from real schedule data + a hero intro slide
-const scheduleSlides = scheduleData.map((show) => ({
-  id: show.id,
-  type: 'show' as const,
-  tag: `${show.emoji} ${show.category.toUpperCase()}`,
-  day: show.day,
-  time: show.timeDisplay,
-  title: show.title,
-  subtitle: show.description,
-  image: programLogoMap[show.id] ?? show.image,
-  accentColor: show.color,
-  bgGradient: `radial-gradient(ellipse at 65% 40%, ${show.color}28 0%, transparent 60%), radial-gradient(ellipse at 20% 70%, rgba(90,40,122,0.2) 0%, transparent 50%)`,
-  cta: { label: '▶ Ver Canal', href: 'https://www.youtube.com/channel/UCF2hgWHhLQx3ZJDsnKU8gZg' },
-  ctaSecondary: { label: '👁️ Ver Detalle', href: `/programa/${show.id}` },
-}))
+// Slide de Plano Oscuro comentado
+const scheduleSlides = scheduleData
+  .filter((show) => show.id !== 'plan-oscuro')
+  .map((show) => ({
+    id: show.id,
+    type: 'show' as const,
+    tag: `${show.emoji} ${show.category.toUpperCase()}`,
+    day: show.day,
+    time: show.timeDisplay,
+    title: show.title,
+    subtitle: show.description,
+    image: heroImageMap[show.id] ?? (programLogoMap[show.id] ?? show.image),
+    video: show.video,
+    accentColor: show.color,
+    bgGradient: `radial-gradient(ellipse at 65% 40%, ${show.color}28 0%, transparent 60%), radial-gradient(ellipse at 20% 70%, rgba(90,40,122,0.2) 0%, transparent 50%)`,
+    cta: { label: '▶ Ver Canal', href: 'https://www.youtube.com/channel/UCF2hgWHhLQx3ZJDsnKU8gZg' },
+    ctaSecondary: { label: '👁️ Ver Detalle', href: `/programa/${show.id}` },
+  }))
 
 const heroIntroSlide = {
   id: 'hero-intro',
@@ -25,12 +40,13 @@ const heroIntroSlide = {
   tag: '🥷 NINJA HOUSE — CANAL OFICIAL',
   day: '',
   time: '',
-  title: 'Contenido Geek',
-  subtitle: 'Gaming, anime, cultura pop y coleccionables. En vivo de lunes a viernes a las 9PM. ¡Únete al dojo ninja!',
+  title: 'La única NERDwork de YouTube',
+  subtitle: 'Gaming, anime, cultura pop, coleccionables y misterio. Transmisiones en vivo de lunes a sábado a las 9:00 PM. ¡Únete al dojo ninja!',
   image: '/assets/NinjaLOGO.png',
+  video: undefined as string | undefined,
   accentColor: '#B01A19',
   bgGradient: 'radial-gradient(ellipse at 70% 40%, rgba(183,31,29,0.28) 0%, transparent 55%), radial-gradient(ellipse at 20% 70%, rgba(176,26,25,0.14) 0%, transparent 50%)',
-  cta: { label: '▶ Suscríbete', href: 'https://www.youtube.com/channel/UCF2hgWHhLQx3ZJDsnKU8gZg' },
+  cta: { label: '▶ Suscríbete', href: 'https://www.youtube.com/channel/UCF2hgWHhLQx3ZJDsnKU8gZg?sub_confirmation=1' },
   ctaSecondary: { label: '📺 Programas', href: '/programas' },
 }
 
@@ -74,7 +90,7 @@ export function HeroCarousel() {
 
   return (
     <div
-      className="relative w-full overflow-hidden rounded-2xl min-h-[540px] lg:min-h-[440px]"
+      className="relative w-full overflow-hidden rounded-3xl min-h-[460px] lg:min-h-[410px] xl:min-h-[450px]"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -94,16 +110,16 @@ export function HeroCarousel() {
           onDragEnd={(_, info) => {
             if (Math.abs(info.point.x - dragStart) > 55) paginate(info.point.x < dragStart ? 1 : -1)
           }}
-          className="absolute inset-0 cursor-grab active:cursor-grabbing"
+          className="absolute inset-0 cursor-grab active:cursor-grabbing overflow-hidden"
           style={{
             background: `${slide.bgGradient}, #151515`,
-            border: `1px solid ${slide.accentColor}25`,
-            borderRadius: '16px',
+            border: `1px solid ${slide.accentColor}35`,
+            borderRadius: '24px',
           }}
         >
           {/* Halftone overlay */}
           <div
-            className="absolute inset-0 rounded-2xl pointer-events-none opacity-15"
+            className="absolute inset-0 rounded-3xl pointer-events-none opacity-15"
             style={{
               backgroundImage: `radial-gradient(circle, ${slide.accentColor}30 1px, transparent 1px)`,
               backgroundSize: '20px 20px',
@@ -111,20 +127,21 @@ export function HeroCarousel() {
           />
 
           {/* Content */}
-          <div className="relative z-10 flex flex-col lg:grid lg:grid-cols-2 gap-6 lg:gap-8 items-center h-full px-5 py-7 lg:px-12 lg:py-9">
+          <div className="relative z-10 flex flex-col lg:grid lg:grid-cols-2 gap-6 lg:gap-10 items-center h-full px-6 py-6 lg:px-12 lg:py-8">
 
-            {/* LEFT: Text */}
-            <div className="flex flex-col gap-3 lg:gap-4 w-full text-center lg:text-left items-center lg:items-start">
+            {/* LEFT: Text & Brand - Centered in harmony with logo */}
+            <div className="flex flex-col gap-2.5 lg:gap-3 w-full text-center items-center max-w-xl mx-auto lg:mx-0">
+              
               {/* Tag + Status badge */}
               <motion.div
                 initial={{ opacity: 0, y: -16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
-                className="flex flex-wrap items-center justify-center lg:justify-start gap-2"
+                className="flex flex-wrap items-center justify-center gap-2"
               >
                 <span
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-display font-bold tracking-widest border"
-                  style={{ color: slide.accentColor, backgroundColor: `${slide.accentColor}18`, borderColor: `${slide.accentColor}35` }}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-display font-bold tracking-widest border backdrop-blur-md"
+                  style={{ color: slide.accentColor, backgroundColor: `${slide.accentColor}25`, borderColor: `${slide.accentColor}45` }}
                 >
                   {slide.tag}
                 </span>
@@ -132,7 +149,7 @@ export function HeroCarousel() {
                 {/* Smart status badge for show slides */}
                 {statusCfg && (
                   <motion.span
-                    className={`px-2.5 py-1 text-xs font-bold font-display rounded-full text-white tracking-wider ${statusCfg.bg}`}
+                    className={`px-2.5 py-1 text-xs font-bold font-display rounded-full text-white tracking-wider backdrop-blur-md shadow-lg ${statusCfg.bg}`}
                     animate={statusCfg.blink ? { opacity: [1, 0.4, 1] } : {}}
                     transition={{ duration: 1, repeat: Infinity }}
                   >
@@ -141,63 +158,57 @@ export function HeroCarousel() {
                 )}
               </motion.div>
 
-              {/* Day + Time badge (show slides only) */}
+              {/* Day + Time badge (show slides only) - HORARIO */}
               {isShowSlide && slide.day && (
                 <motion.div
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.18 }}
-                  className="flex items-center justify-center lg:justify-start gap-2"
+                  className="flex items-center justify-center gap-2"
                 >
                   <div
-                    className="px-3 py-1 rounded-lg text-xs font-display font-black tracking-widest"
-                    style={{ backgroundColor: `${slide.accentColor}20`, color: slide.accentColor }}
+                    className="px-3 py-1 rounded-lg text-xs font-display font-black tracking-widest backdrop-blur-md"
+                    style={{ backgroundColor: `${slide.accentColor}25`, color: slide.accentColor, border: `1px solid ${slide.accentColor}35` }}
                   >
                     {slide.day.toUpperCase()}
                   </div>
-                  <span className="text-white/35 text-xs font-display font-bold">@ {slide.time}</span>
+                  <span className="text-white/60 text-xs font-display font-bold">@ {slide.time}</span>
                 </motion.div>
               )}
 
-              {/* Mobile-only Show Image (placed between schedule and title) */}
-              <div className="flex lg:hidden items-center justify-center relative flex-shrink-0 my-2">
-                {/* Glow blob */}
-                <motion.div
-                  className="absolute w-40 h-40 rounded-full pointer-events-none blur-[40px]"
-                  style={{ background: `radial-gradient(circle, ${slide.accentColor}35 0%, transparent 70%)` }}
-                  animate={{ scale: [1, 1.2, 1] }}
-                  transition={{ duration: 4, repeat: Infinity }}
-                />
-                <motion.img
-                  key={`img-mob-${current}`}
+              {/* Giant Show Logo placed BETWEEN Schedule and Title - Centered */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9, y: 6 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.4 }}
+                className="w-full flex items-center justify-center my-2"
+              >
+                <img
                   src={slide.image}
                   alt={slide.title}
-                  loading="lazy"
-                  className="relative z-10 max-w-[140px] max-h-[120px] w-full object-contain drop-shadow-2xl"
-                  initial={{ opacity: 0, scale: 0.82, rotate: -4 }}
-                  animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                  transition={{ delay: 0.15, duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }}
-                  style={{ filter: `drop-shadow(0 0 28px ${slide.accentColor}55)` }}
+                  className="max-h-[135px] sm:max-h-[160px] lg:max-h-[185px] xl:max-h-[205px] w-auto object-contain drop-shadow-[0_10px_35px_rgba(0,0,0,0.95)]"
                 />
-              </div>
+              </motion.div>
 
-              {/* Title */}
+              {/* Title (Ocultado/Comentado para todos los slides ya que el logo ya tiene el nombre del show) */}
+              {/*
               <motion.h2
                 initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.22 }}
-                className="font-display font-black text-3xl lg:text-5xl leading-tight text-white"
-                style={{ textShadow: `0 0 40px ${slide.accentColor}30` }}
+                className="font-display font-black text-3xl lg:text-4xl xl:text-5xl leading-tight text-white text-center"
+                style={{ textShadow: `0 2px 25px rgba(0,0,0,0.8), 0 0 40px ${slide.accentColor}45` }}
               >
                 <span style={{ color: slide.accentColor }}>{slide.title}</span>
               </motion.h2>
+              */}
 
               {/* Description */}
               <motion.p
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.32 }}
-                className="text-white/55 font-body text-[12.5px] lg:text-sm leading-relaxed max-w-md text-center lg:text-left"
+                className="text-white/75 font-body text-[13px] lg:text-sm leading-relaxed max-w-md text-center drop-shadow-md"
               >
                 {slide.subtitle}
               </motion.p>
@@ -207,22 +218,22 @@ export function HeroCarousel() {
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.42 }}
-                className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 pt-1 w-full"
+                className="flex flex-wrap items-center justify-center gap-2.5 pt-1 w-full"
               >
                 <motion.a
                   href={slide.cta.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-5 py-2.5 lg:px-6 lg:py-3 rounded-xl font-display font-black text-xs lg:text-sm transition-all duration-250"
+                  className="px-5 py-2.5 lg:px-6 lg:py-3 rounded-xl font-display font-black text-xs lg:text-sm transition-all duration-250 shadow-xl"
                   style={{ backgroundColor: slide.accentColor, color: '#151515' }}
-                  whileHover={{ scale: 1.05, y: -2, boxShadow: `0 0 25px ${slide.accentColor}60` }}
+                  whileHover={{ scale: 1.05, y: -2, boxShadow: `0 0 30px ${slide.accentColor}80` }}
                   whileTap={{ scale: 0.97 }}
                 >
                   {slide.cta.label}
                 </motion.a>
                 <motion.a
                   href={slide.ctaSecondary.href}
-                  className="px-5 py-2.5 lg:px-6 lg:py-3 rounded-xl font-display font-bold text-xs lg:text-sm text-white/65 border border-white/15 hover:border-white/40 hover:text-white transition-all duration-250"
+                  className="px-5 py-2.5 lg:px-6 lg:py-3 rounded-xl font-display font-bold text-xs lg:text-sm text-white border border-white/20 bg-black/40 backdrop-blur-md hover:border-white/50 hover:bg-black/60 transition-all duration-250 shadow-lg"
                   whileHover={{ scale: 1.03, y: -1 }}
                   whileTap={{ scale: 0.97 }}
                 >
@@ -231,26 +242,57 @@ export function HeroCarousel() {
               </motion.div>
             </div>
 
-            {/* RIGHT: Show Image */}
-            <div className="hidden lg:flex items-center justify-center relative flex-shrink-0 mb-2 lg:mb-0">
+            {/* RIGHT: Compact Video Player (if video available) OR Image Poster (if no video) */}
+            <div className="hidden lg:flex items-center justify-center relative flex-shrink-0 mb-2 lg:mb-0 w-full max-w-[560px]">
               {/* Glow blob */}
               <motion.div
-                className="absolute w-40 h-40 lg:w-72 lg:h-72 rounded-full pointer-events-none blur-[40px] lg:blur-[60px]"
-                style={{ background: `radial-gradient(circle, ${slide.accentColor}35 0%, transparent 70%)` }}
-                animate={{ scale: [1, 1.2, 1] }}
+                className="absolute w-64 h-64 lg:w-96 lg:h-96 rounded-full pointer-events-none blur-[60px] lg:blur-[90px]"
+                style={{ background: `radial-gradient(circle, ${slide.accentColor}45 0%, transparent 70%)` }}
+                animate={{ scale: [1, 1.15, 1] }}
                 transition={{ duration: 4, repeat: Infinity }}
               />
-              <motion.img
-                key={`img-${current}`}
-                src={slide.image}
-                alt={slide.title}
-                loading="lazy"
-                className="relative z-10 max-w-[140px] max-h-[120px] lg:max-w-[280px] lg:max-h-[280px] w-full object-contain drop-shadow-2xl"
-                initial={{ opacity: 0, scale: 0.82, rotate: -4 }}
-                animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                transition={{ delay: 0.15, duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }}
-                style={{ filter: `drop-shadow(0 0 28px ${slide.accentColor}55)` }}
-              />
+
+              {slide.video ? (
+                <motion.div
+                  key={`video-box-${current}`}
+                  className="relative z-10 w-full aspect-video rounded-3xl overflow-hidden border border-white/25 shadow-[0_25px_60px_rgba(0,0,0,0.85)] bg-black"
+                  initial={{ opacity: 0, scale: 0.88 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.15, duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }}
+                  style={{
+                    boxShadow: `0 25px 60px rgba(0,0,0,0.85), 0 0 45px ${slide.accentColor}50`,
+                    borderColor: `${slide.accentColor}65`,
+                  }}
+                >
+                  <video
+                    src={slide.video}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+                  
+                  {/* Subtle video preview badge */}
+                  <div className="absolute top-3.5 right-3.5 flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/20 text-[10.5px] font-display font-black text-white pointer-events-none shadow-lg">
+                    <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                    PREVIEW
+                  </div>
+                </motion.div>
+              ) : (
+                <motion.img
+                  key={`img-${current}`}
+                  src={slide.image}
+                  alt={slide.title}
+                  loading="lazy"
+                  className="relative z-10 max-w-[160px] max-h-[140px] lg:max-w-[320px] lg:max-h-[320px] w-full object-contain drop-shadow-2xl"
+                  initial={{ opacity: 0, scale: 0.82, rotate: -4 }}
+                  animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                  transition={{ delay: 0.15, duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }}
+                  style={{ filter: `drop-shadow(0 0 28px ${slide.accentColor}55)` }}
+                />
+              )}
             </div>
           </div>
 

@@ -275,7 +275,7 @@ export function MediaKitPage() {
           </p>
           <div className="flex flex-wrap gap-4 justify-center md:justify-start print:hidden">
             <Link 
-              to="/invierte" 
+              to="/contacto" 
               className="px-6 py-3 bg-ninja-green text-ninja-black font-display font-black text-xs rounded-xl hover:scale-105 transition-all shadow-lg shadow-ninja-green/10 relative overflow-hidden group/btn"
             >
               <span className="relative z-10">💼 Solicitar Tarifario Comercial</span>

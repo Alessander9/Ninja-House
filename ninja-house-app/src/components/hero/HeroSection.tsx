@@ -45,7 +45,6 @@ function HeroCounter({ targetValue, suffix, color, start }: { targetValue: numbe
 }
 
 export function HeroSection() {
-  const logoRef = useRef<HTMLImageElement>(null)
   const topRef = useRef<HTMLDivElement>(null)
   const carouselRef = useRef<HTMLDivElement>(null)
   const [startCount, setStartCount] = useState(false)
@@ -57,35 +56,30 @@ export function HeroSection() {
         delay: 2.9 // Delay animations until the loader finishes and fades out
       })
       
-      tl.fromTo(logoRef.current,
-        { y: -50, opacity: 0, scale: 0.7 },
-        { y: 0, opacity: 1, scale: 1, duration: 0.9 }
-      )
-      .fromTo('.hero-badge',
-        { opacity: 0, y: -10 },
-        { opacity: 1, y: 0, duration: 0.5 },
-        '-=0.3'
+      tl.fromTo('.hero-badge',
+        { opacity: 0, y: -8 },
+        { opacity: 1, y: 0, duration: 0.45 }
       )
       .fromTo('.hero-top-text',
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, stagger: 0.12, duration: 0.7 },
-        '-=0.2'
+        { opacity: 0, y: 15 },
+        { opacity: 1, y: 0, stagger: 0.08, duration: 0.55 },
+        '-=0.15'
       )
       .fromTo(carouselRef.current,
-        { opacity: 0, y: 40, scale: 0.97 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.8 },
-        '-=0.3'
+        { opacity: 0, y: 25, scale: 0.98 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.75 },
+        '-=0.2'
       )
       .fromTo('.hero-stats',
-        { opacity: 0, y: 20 },
+        { opacity: 0, y: 15 },
         { 
           opacity: 1, 
           y: 0, 
-          stagger: 0.08, 
-          duration: 0.5,
+          stagger: 0.06, 
+          duration: 0.45,
           onStart: () => setStartCount(true)
         },
-        '-=0.2'
+        '-=0.15'
       )
     })
     return () => ctx.revert()
@@ -94,7 +88,7 @@ export function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-20 pb-10"
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-16 pb-6"
       style={{
         background: 'radial-gradient(ellipse at 70% 30%, rgba(183,31,29,0.22) 0%, transparent 55%), radial-gradient(ellipse at 20% 70%, rgba(176,26,25,0.1) 0%, transparent 50%), #151515',
       }}
@@ -135,46 +129,61 @@ export function HeroSection() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
 
-        {/* Top: Logo + badge + text */}
-        <div ref={topRef} className="flex flex-col lg:flex-row items-center lg:items-start gap-8 mb-10">
-
-          {/* Logo */}
-          <img
-            ref={logoRef}
-            src="/assets/NinjaLOGO.png"
-            alt="Ninja House"
-            className="h-24 w-auto object-contain opacity-0 flex-shrink-0"
-            style={{ filter: 'drop-shadow(0 0 24px rgba(176,26,25,0.45))' }}
-          />
-
-          {/* Text column */}
-          <div className="flex flex-col gap-4 text-center lg:text-left">
-            <div className="hero-badge opacity-0">
+        {/* Top: Redesigned header with "La única NERDwork de YouTube" & Auto-subscribe CTA */}
+        <div ref={topRef} className="flex flex-col lg:flex-row items-center justify-between gap-4 mb-4 text-center lg:text-left">
+          <div className="flex flex-col gap-1.5 max-w-3xl">
+            <div className="hero-badge opacity-0 flex items-center justify-center lg:justify-start gap-2">
               <motion.span
-                className="inline-flex items-center gap-2 px-4 py-1.5 bg-red-600/10 border border-red-600/30 rounded-full text-red-500 font-display font-bold text-xs tracking-widest"
+                className="inline-flex items-center gap-1.5 px-3 py-0.5 bg-red-600/10 border border-red-600/30 rounded-full text-red-500 font-display font-bold text-[11px] tracking-widest backdrop-blur-md"
                 animate={{ boxShadow: ['0 0 0px rgba(176,26,25,0)', '0 0 16px rgba(176,26,25,0.3)', '0 0 0px rgba(176,26,25,0)'] }}
                 transition={{ duration: 2.5, repeat: Infinity }}
               >
                 <motion.span className="w-1.5 h-1.5 rounded-full bg-red-500 inline-block" animate={{ opacity: [1, 0.3, 1] }} transition={{ duration: 1.5, repeat: Infinity }} />
                 NINJA HOUSE — CANAL OFICIAL
               </motion.span>
+              <span className="hidden sm:inline-flex items-center gap-1 px-2.5 py-0.5 bg-white/[0.04] border border-white/10 rounded-full text-white/60 font-display font-bold text-[10.5px] tracking-wider">
+                🔴 LUN A SÁB 9PM
+              </span>
             </div>
 
-            <h1 className="hero-top-text opacity-0 font-display font-black text-5xl sm:text-6xl lg:text-7xl leading-tight">
-              <span className="text-white">Contenido</span>{' '}
-              <span className="text-red-500" style={{ textShadow: '0 0 40px rgba(176,26,25,0.45)' }}>Geek</span>{' '}
-              <span className="text-white">Sin</span>{' '}
-              <span className="text-red-100" style={{ textShadow: '0 0 40px rgba(199,90,88,0.4)' }}>Filtros</span>
+            <h1 className="hero-top-text opacity-0 font-display font-black text-2xl sm:text-3xl lg:text-4xl xl:text-[42px] leading-tight text-white tracking-tight">
+              La única{' '}
+              <span
+                className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-rose-400 to-amber-300 font-black tracking-wide"
+                style={{ filter: 'drop-shadow(0 0 25px rgba(239,68,68,0.55))' }}
+              >
+                NERDwork
+              </span>{' '}
+              de YouTube
             </h1>
 
-            <p className="hero-top-text opacity-0 text-white/55 text-sm sm:text-base md:text-lg font-body max-w-4xl leading-relaxed">
-              Gaming · Anime · Cultura Pop · Reviews · Comunidad · <span className="text-red-500 font-semibold">En vivo cada semana</span> desde Ninja House.
+            <p className="hero-top-text opacity-0 text-white/65 text-xs sm:text-sm font-body max-w-2xl leading-relaxed">
+              Gaming · Anime · Cultura Pop · Coleccionismo · Misterio · <span className="text-red-400 font-semibold">En vivo cada semana</span> desde el dojo ninja.
             </p>
           </div>
+
+          {/* Direct Auto-subscribe button */}
+          <motion.div
+            className="hero-top-text opacity-0 flex-shrink-0 pt-1 lg:pt-0"
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.96 }}
+          >
+            <a
+              href="https://www.youtube.com/channel/UCF2hgWHhLQx3ZJDsnKU8gZg?sub_confirmation=1"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl font-display font-black text-xs sm:text-sm text-white bg-gradient-to-r from-red-600 via-red-500 to-red-700 hover:from-red-500 hover:to-red-600 shadow-[0_0_25px_rgba(220,38,38,0.45)] hover:shadow-[0_0_35px_rgba(220,38,38,0.7)] border border-red-400/30 transition-all duration-300 group"
+            >
+              <svg className="w-5 h-5 text-white transition-transform group-hover:scale-110" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+              <span>Suscribirme al Canal</span>
+            </a>
+          </motion.div>
         </div>
 
-        {/* Carousel */}
-        <div ref={carouselRef} className="opacity-0 mb-10 min-h-[540px] lg:min-h-[440px]">
+        {/* Carousel with compact zoom-out perspective */}
+        <div ref={carouselRef} className="opacity-0 mb-6 min-h-[460px] lg:min-h-[410px] xl:min-h-[450px] w-full">
           <HeroCarousel />
         </div>
 

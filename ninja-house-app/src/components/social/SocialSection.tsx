@@ -24,9 +24,9 @@ const FacebookIcon = () => (
   </svg>
 )
 
-const PatreonIcon = () => (
+const YouTubeIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-    <path d="M0 .48v23.04h4.22V.48Zm15.385 0c-4.764 0-8.623 3.86-8.623 8.622 0 4.764 3.86 8.623 8.623 8.623 4.763 0 8.615-3.86 8.615-8.623C24 4.34 20.15 1 15.385 1Z"/>
+    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
   </svg>
 )
 
@@ -49,6 +49,21 @@ const XIcon = () => (
 )
 
 const socials = [
+  {
+    id: 'youtube',
+    name: 'YouTube',
+    handle: '@ninjahouseshow',
+    description: 'Nuestra sede principal. Shows completos, shorts virales y directos diarios.',
+    Icon: YouTubeIcon,
+    color: '#FF0000',
+    bg: 'rgba(255,0,0,0.06)',
+    border: 'rgba(255,0,0,0.22)',
+    borderHover: '#FF0000',
+    stat: '85K+ Suscriptores',
+    statSub: 'En Vivo 9:00 PM',
+    href: 'https://www.youtube.com/channel/UCF2hgWHhLQx3ZJDsnKU8gZg?sub_confirmation=1',
+    cta: 'Suscribirse',
+  },
   {
     id: 'instagram',
     name: 'Instagram',
@@ -93,21 +108,6 @@ const socials = [
     statSub: 'Publicaciones y Updates',
     href: 'https://facebook.com/NinjaHouseshow',
     cta: 'Seguir',
-  },
-  {
-    id: 'patreon',
-    name: 'Patreon',
-    handle: 'ninjahouseshow',
-    description: 'Apoya el canal directamente y accede a ventajas y contenido exclusivo.',
-    Icon: PatreonIcon,
-    color: '#FF424D',
-    bg: 'rgba(255,66,77,0.06)',
-    border: 'rgba(255,66,77,0.2)',
-    borderHover: '#FF424D',
-    stat: 'Contenido exclusivo',
-    statSub: 'Apoyo Directo',
-    href: 'https://patreon.com/ninjahouseshow',
-    cta: 'Apoyar',
   },
   {
     id: 'spotify',

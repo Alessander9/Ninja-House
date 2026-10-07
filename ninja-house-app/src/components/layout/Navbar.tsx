@@ -17,8 +17,6 @@ const navLinks: NavLink[] = [
   { label: 'Inicio', href: '/', isAnchor: false },
   // { label: 'Drops', href: '/#collectibles', isAnchor: true, anchorId: 'collectibles' },
   { label: 'Programas', href: '/programas', isAnchor: false },
-  { label: 'Invierte', href: '/invierte', isAnchor: false },
-  { label: 'Media Kit', href: '/media-kit', isAnchor: false },
   { label: 'Contacto', href: '/contacto', isAnchor: false },
 ]
 
@@ -99,16 +97,6 @@ export function Navbar() {
             ))}
           </div>
 
-          {/* CTA */}
-          <div className="hidden md:flex items-center gap-3">
-            <Link
-              to="/invierte"
-              className="px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white font-black font-display text-sm rounded-lg transition-all hover:scale-105 shadow-md shadow-red-600/10"
-            >
-              💼 Sé auspiciador
-            </Link>
-          </div>
-
           {/* Mobile menu button */}
           <button
             className="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5"
@@ -161,13 +149,6 @@ export function Navbar() {
                   {link.label}
                 </Link>
               ))}
-              <Link
-                to="/invierte"
-                onClick={() => setMenuOpen(false)}
-                className="mt-4 px-5 py-3 bg-red-600 hover:bg-red-700 text-white font-bold font-display text-center rounded-lg"
-              >
-                💼 Sé auspiciador
-              </Link>
             </div>
           </motion.div>
         )}

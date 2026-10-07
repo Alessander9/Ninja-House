@@ -21,9 +21,9 @@ const FacebookIcon = () => (
   </svg>
 )
 
-const PatreonIcon = () => (
+const YouTubeIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
-    <path d="M0 .48v23.04h4.22V.48Zm15.385 0c-4.764 0-8.623 3.86-8.623 8.622 0 4.764 3.86 8.623 8.623 8.623 4.763 0 8.615-3.86 8.615-8.623C24 4.34 20.15 1 15.385 1Z"/>
+    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
   </svg>
 )
 
@@ -46,10 +46,10 @@ const XIcon = () => (
 )
 
 const socials = [
+  { label: 'YouTube', href: 'https://www.youtube.com/channel/UCF2hgWHhLQx3ZJDsnKU8gZg?sub_confirmation=1', Icon: YouTubeIcon, color: '#FF0000' },
   { label: 'Instagram', href: 'https://instagram.com/ninjahouseshow', Icon: InstagramIcon, color: '#E1306C' },
   { label: 'TikTok', href: 'https://tiktok.com/@ninjahouseshow', Icon: TikTokIcon, color: '#69C9D0' },
   { label: 'Facebook', href: 'https://facebook.com/NinjaHouseshow', Icon: FacebookIcon, color: '#1877F2' },
-  { label: 'Patreon', href: 'https://patreon.com/ninjahouseshow', Icon: PatreonIcon, color: '#FF424D' },
   { label: 'Spotify', href: 'https://podcasters.spotify.com/pod/show/ninjahouseshow', Icon: SpotifyIcon, color: '#1ED760' },
   { label: 'Twitch', href: 'https://twitch.tv/ninjahouseshow', Icon: TwitchIcon, color: '#9146FF' },
   { label: 'Twitter/X', href: 'https://twitter.com/ninjahouseshow', Icon: XIcon, color: '#ffffff' },
@@ -154,9 +154,10 @@ export function Footer() {
               {[
                 { label: '🍜 Lunes: Animes y Ramen', href: '/programa/animes-y-ramen' },
                 { label: '🌐 Martes: Overhead', href: '/programa/overhead' },
-                { label: '⚡ Miércoles: Freakuencia M', href: '/programa/freakuencia-m' },
+                { label: '🎙️ Miércoles: FrikisDeM', href: '/programa/frikisdem' },
                 { label: '🧸 Jueves: Maldito Plástico', href: '/programa/maldito-plastico' },
-                { label: '🎬 Viernes: Cine Infarto', href: '/programa/cine-infarto' }
+                { label: '🎬 Viernes: Cine Infarto', href: '/programa/cine-infarto' },
+                { label: '🕯️ Sábado: Plan Oscuro', href: '/programa/plan-oscuro' }
               ].map((show) => (
                 <li key={show.label}>
                   <Link 
