@@ -23,8 +23,13 @@ import { ContactSection } from './components/contact/ContactSection'
 const ProgramsPage = lazy(() => import('./pages/ProgramsPage').then(m => ({ default: m.ProgramsPage })))
 const ContactPage = lazy(() => import('./pages/ContactPage').then(m => ({ default: m.ContactPage })))
 const ProgramDetailPage = lazy(() => import('./components/programs/ProgramDetailPage').then(m => ({ default: m.ProgramDetailPage })))
+const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage').then(m => ({ default: m.PrivacyPolicyPage })))
+const TermsConditionsPage = lazy(() => import('./pages/TermsConditionsPage').then(m => ({ default: m.TermsConditionsPage })))
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage').then(m => ({ default: m.NotFoundPage })))
 const PromoVideo = lazy(() => import('./video/PromoVideo').then(m => ({ default: m.PromoVideo })))
 import { WhatsAppButton } from './components/ui/WhatsAppButton'
+import { CookieConsent } from './components/ui/CookieConsent'
+import { useSEO } from './hooks/useSEO'
 
 // Helper component to scroll to top or anchor with Lenis
 function ScrollToTop() {
@@ -56,6 +61,7 @@ function ScrollToTop() {
 }
 
 function LandingPage() {
+  useSEO()
   return (
     <>
       <HeroSection />
@@ -125,11 +131,15 @@ function AppContent() {
             <Route path="/programa/:id" element={<ProgramDetailPage />} />
             <Route path="/programas" element={<ProgramsPage />} />
             <Route path="/contacto" element={<ContactPage />} />
+            <Route path="/privacidad" element={<PrivacyPolicyPage />} />
+            <Route path="/terminos" element={<TermsConditionsPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
       </main>
       <Footer />
       <WhatsAppButton />
+      <CookieConsent />
     </div>
   )
 }

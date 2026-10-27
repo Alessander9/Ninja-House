@@ -9,6 +9,7 @@ import type { CSSProperties } from 'react'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 import { gsap } from 'gsap'
 import { fetchLiveEpisodes, type YouTubeEpisode, youtubePlaylistMap } from '../../services/youtubePlaylistService'
+import { useSEO } from '../../hooks/useSEO'
 
 const statusConfig = {
   live: { label: '🔴 EN VIVO AHORA', bg: 'bg-red-600', pulse: true },
@@ -379,6 +380,11 @@ export function ProgramDetailPage() {
   const extra = extraShowsData[id || ''] || extraShowsData[normalizedId] || (program ? extraShowsData[program.id] : undefined) || (program ? extraShowsData[program.slug] : undefined)
   const countdown = useCountdown(program?.dayIndex ?? 1)
   const isRetiredProgram = !!program && inactiveProgramIds.has(program.id)
+
+  useSEO({
+    title: program ? `${program.title} — Transmisiones y Episodios` : 'Programa',
+    description: program ? `${program.description}. Transmisiones oficiales en vivo por Ninja House.` : undefined
+  })
 
   useEffect(() => {
     if (!program || reducedMotion) return

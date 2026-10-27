@@ -6,12 +6,40 @@ export function ContactSection() {
     email: '',
     company: '',
     reason: 'Auspicio',
-    message: ''
+    message: '',
+    ninja_pot: '' // Anti-spam Honeypot
   })
   const [submitted, setSubmitted] = useState(false)
+  const [errorMsg, setErrorMsg] = useState('')
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    
+    // Honeypot trap: if filled by a bot, silently discard
+    if (form.ninja_pot && form.ninja_pot.trim() !== '') {
+      setSubmitted(true)
+      setTimeout(() => {
+        setSubmitted(false)
+        setForm({ name: '', email: '', company: '', reason: 'Auspicio', message: '', ninja_pot: '' })
+      }, 1000)
+      return
+    }
+
+    // Client-side validations
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(form.email)) {
+      setErrorMsg('Por favor introduce una dirección de correo válida.')
+      return
+    }
+    if (form.name.trim().length < 2) {
+      setErrorMsg('Por favor ingresa un nombre válido.')
+      return
+    }
+    if (form.message.trim().length < 5) {
+      setErrorMsg('Por favor escribe un mensaje de al menos 5 caracteres.')
+      return
+    }
+    setErrorMsg('')
     
     // Simulate submission
     setSubmitted(true)
@@ -30,7 +58,7 @@ export function ContactSection() {
     setTimeout(() => {
       window.location.href = `mailto:Contacto@ninjahouseshow.com?subject=${subject}&body=${body}`
       setSubmitted(false)
-      setForm({ name: '', email: '', company: '', reason: 'Auspicio', message: '' })
+      setForm({ name: '', email: '', company: '', reason: 'Auspicio', message: '', ninja_pot: '' })
     }, 1200)
   }
 
@@ -115,6 +143,28 @@ export function ContactSection() {
             >
               {/* Halftone circular highlight inside form */}
               <div className="absolute inset-0 halftone-bg opacity-5 pointer-events-none" />
+
+              {/* Honeypot field for anti-spam bots */}
+              <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', top: '-9999px', opacity: 0, height: 0, width: 0, overflow: 'hidden' }}>
+                <label htmlFor="form-ninja-pot">Leave this field blank</label>
+                <input 
+                  id="form-ninja-pot"
+                  type="text" 
+                  name="ninja_pot" 
+                  tabIndex={-1} 
+                  autoComplete="off" 
+                  value={form.ninja_pot}
+                  onChange={(e) => setForm({ ...form, ninja_pot: e.target.value })}
+                />
+              </div>
+
+              {/* Validation Error Alert */}
+              {errorMsg && (
+                <div className="p-3.5 rounded-xl bg-ninja-red/10 border border-ninja-red/30 text-ninja-red text-xs font-body font-bold flex items-center gap-2">
+                  <span>⚠️</span>
+                  <span>{errorMsg}</span>
+                </div>
+              )}
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Name */}

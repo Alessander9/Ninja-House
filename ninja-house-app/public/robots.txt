@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /scratch/
+Disallow: /promo/
+
+Sitemap: https://ninja-house-app.vercel.app/sitemap.xml

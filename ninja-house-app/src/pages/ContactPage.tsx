@@ -1,7 +1,13 @@
 import { Link } from 'react-router-dom'
 import { ContactSection } from '../components/contact/ContactSection'
+import { useSEO } from '../hooks/useSEO'
 
 export function ContactPage() {
+  useSEO({
+    title: 'Contacto y Alianzas Comerciales',
+    description: 'Comunícate con el equipo oficial de Ninja House. Auspicios, colaboraciones comerciales, prensa y participación en shows.'
+  })
+
   return (
     <div className="min-h-screen bg-ninja-black text-white pt-28 pb-20 relative overflow-hidden">
       {/* Background decoration */}

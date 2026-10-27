@@ -512,7 +512,20 @@ export function Footer() {
             <p className="text-white/40 text-xs font-body">
               © {new Date().getFullYear()} {programConfig ? `${programConfig.copyright}. Todos los derechos reservados.` : 'Ninja House. Todos los derechos reservados.'}
             </p>
-            <p className="text-[10px] text-white/25 mt-1 font-body">
+            <div className="flex items-center justify-center md:justify-start gap-3 mt-1.5 text-[11px] font-body text-white/40">
+              <Link to="/privacidad" className="hover:text-white transition-colors underline underline-offset-2">
+                Privacidad
+              </Link>
+              <span>·</span>
+              <Link to="/terminos" className="hover:text-white transition-colors underline underline-offset-2">
+                Términos
+              </Link>
+              <span>·</span>
+              <Link to="/contacto" className="hover:text-white transition-colors underline underline-offset-2">
+                Contacto
+              </Link>
+            </div>
+            <p className="text-[10px] text-white/20 mt-1.5 font-body">
               {programConfig ? programConfig.liveNotice : 'Desarrollado con estética urbana & neón geek.'}
             </p>
           </div>

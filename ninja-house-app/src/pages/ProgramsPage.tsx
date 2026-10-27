@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { CircularGallery, type GalleryItem } from '../components/ui/circular-gallery'
+import { useSEO } from '../hooks/useSEO'
 
 const programGalleryItems: GalleryItem[] = [
   {
@@ -96,6 +97,11 @@ const programGalleryItems: GalleryItem[] = [
 
 export function ProgramsPage() {
   const navigate = useNavigate()
+
+  useSEO({
+    title: 'Programas y Transmisiones Semanales',
+    description: 'Conoce los 6 programas oficiales de Ninja House: Animes y Ramen, Over Head, Frikis de M, Maldito Plástico, Cine Infarto y El Plano Oscuro.'
+  })
 
   return (
     // Outer scrollable container that drives the 3D rotation with scroll + auto-rotation
