@@ -277,7 +277,9 @@ export function HeroCarousel() {
                     muted
                     loop
                     playsInline
+                    preload="metadata"
                     className="w-full h-full object-cover"
+                    style={{ transform: 'translateZ(0)' }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
                 </motion.div>

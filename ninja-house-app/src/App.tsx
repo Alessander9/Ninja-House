@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, lazy, Suspense } from 'react'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import './styles/globals.css'
 import { useLenis } from './hooks/useLenis'
@@ -7,7 +7,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Navbar } from './components/layout/Navbar'
 import { Footer } from './components/layout/Footer'
 
-// Sections
+// Sections (Loaded directly for immediate landing page rendering)
 import { HeroSection } from './components/hero/HeroSection'
 import { AboutSection } from './components/about/AboutSection'
 // import { LiveNowSection } from './components/live/LiveNowSection'
@@ -19,12 +19,12 @@ import { SocialSection } from './components/social/SocialSection'
 import { SpotifySection } from './components/spotify/SpotifySection'
 import { ContactSection } from './components/contact/ContactSection'
 
-// Pages
-import { ProgramsPage } from './pages/ProgramsPage'
-import { ContactPage } from './pages/ContactPage'
-import { ProgramDetailPage } from './components/programs/ProgramDetailPage'
+// Secondary Pages (Lazy-loaded so initial bundle is ultra lightweight)
+const ProgramsPage = lazy(() => import('./pages/ProgramsPage').then(m => ({ default: m.ProgramsPage })))
+const ContactPage = lazy(() => import('./pages/ContactPage').then(m => ({ default: m.ContactPage })))
+const ProgramDetailPage = lazy(() => import('./components/programs/ProgramDetailPage').then(m => ({ default: m.ProgramDetailPage })))
+const PromoVideo = lazy(() => import('./video/PromoVideo').then(m => ({ default: m.PromoVideo })))
 import { WhatsAppButton } from './components/ui/WhatsAppButton'
-import { PromoVideo } from './video/PromoVideo'
 
 // Helper component to scroll to top or anchor with Lenis
 function ScrollToTop() {
@@ -119,12 +119,14 @@ function AppContent() {
       <Navbar />
       <ScrollToTop />
       <main>
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/programa/:id" element={<ProgramDetailPage />} />
-          <Route path="/programas" element={<ProgramsPage />} />
-          <Route path="/contacto" element={<ContactPage />} />
-        </Routes>
+        <Suspense fallback={null}>
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/programa/:id" element={<ProgramDetailPage />} />
+            <Route path="/programas" element={<ProgramsPage />} />
+            <Route path="/contacto" element={<ContactPage />} />
+          </Routes>
+        </Suspense>
       </main>
       <Footer />
       <WhatsAppButton />
@@ -135,7 +137,11 @@ function AppContent() {
 // /video se renderiza fuera del shell del sitio (sin navbar, loader ni Lenis)
 function Shell() {
   const { pathname } = useLocation()
-  return pathname.startsWith('/video') ? <PromoVideo /> : <AppContent />
+  return (
+    <Suspense fallback={null}>
+      {pathname.startsWith('/video') ? <PromoVideo /> : <AppContent />}
+    </Suspense>
+  )
 }
 
 function App() {

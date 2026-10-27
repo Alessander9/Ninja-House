@@ -32,7 +32,8 @@ export function useLenis() {
     }
 
     gsap.ticker.add(updateLenis)
-    gsap.ticker.lagSmoothing(0)
+    // Calibrate lag smoothing to absorb frame rate drops smoothly without stuttering
+    gsap.ticker.lagSmoothing(500, 33)
 
     const handleResize = () => {
       lenis.resize()
