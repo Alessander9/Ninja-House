@@ -64,6 +64,7 @@ export function Footer() {
   const isPlastico = location.pathname.includes('maldito-plastico') || location.pathname.includes('malditoplastico')
   const isCineInfarto = location.pathname.includes('cine-infarto') || location.pathname.includes('cineinfarto')
   const isPlanoOscuro = location.pathname.includes('el-plano-oscuro') || location.pathname.includes('plan-oscuro') || location.pathname.includes('lado-oscuro')
+  const isHome = location.pathname === '/'
 
   const programConfig = isAnimeRamen ? {
     logo: '/assets/animesRamen_logo.webp',
@@ -175,6 +176,8 @@ export function Footer() {
         ? 'bg-[#0a0507] border-t border-red-600/35'
         : isPlanoOscuro
         ? 'bg-[#080503] border-t border-amber-600/35'
+        : isHome
+        ? 'bg-[#060404] border-t border-red-600/30'
         : 'bg-ninja-black border-t border-white/5'
     } pt-20 sm:pt-24 pb-12 px-6 sm:px-10 overflow-hidden`}>
       
@@ -341,7 +344,34 @@ export function Footer() {
         </>
       )}
 
-      {!isAnimeRamen && !isOverhead && !isFrikis && !isPlastico && !isCineInfarto && !isPlanoOscuro && (
+      {/* ── CUSTOM FOOTER ARTWORK FOR INDEX (HOME PAGE UNICAMENTE) ── */}
+      {isHome && (
+        <>
+          <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0">
+            <img
+              src="/assets/footerprincipal.webp"
+              alt="Ninja House Footer"
+              className="w-full h-full object-cover object-right-bottom block"
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+            {/* Degradados sutiles para asegurar lectura perfecta de los textos a la izquierda */}
+            <div className="absolute inset-0 bg-gradient-to-r from-ninja-black/95 via-ninja-black/75 to-transparent md:w-3/5 pointer-events-none" />
+            <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-ninja-black via-ninja-black/70 to-transparent pointer-events-none" />
+            <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/85 to-transparent pointer-events-none" />
+          </div>
+
+          {/* Ambient Dojo Red Glow */}
+          <div
+            className="absolute bottom-0 right-0 w-[550px] h-[450px] pointer-events-none rounded-full"
+            style={{ background: 'radial-gradient(circle, rgba(220,38,38,0.2) 0%, transparent 70%)', filter: 'blur(80px)' }}
+          />
+
+          {/* Top Crimson Ninja House Accent Line */}
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-ninja-red via-red-600 to-red-800" />
+        </>
+      )}
+
+      {!isAnimeRamen && !isOverhead && !isFrikis && !isPlastico && !isCineInfarto && !isPlanoOscuro && !isHome && (
         <>
           {/* Default Glow Effects */}
           <div className="absolute bottom-0 right-0 w-[400px] h-[300px] pointer-events-none rounded-full"
@@ -357,7 +387,7 @@ export function Footer() {
       <div className="max-w-7xl mx-auto relative z-10">
         
         {/* Contenido del Footer dentro de la imagen */}
-        <div className={`grid grid-cols-1 md:grid-cols-2 ${programConfig ? 'lg:grid-cols-3 max-w-4xl mr-auto' : 'lg:grid-cols-4'} gap-10 md:gap-12 mb-16`}>
+        <div className={`grid grid-cols-1 md:grid-cols-2 ${programConfig || isHome ? 'lg:grid-cols-3 max-w-4xl mr-auto' : 'lg:grid-cols-4'} gap-10 md:gap-12 mb-16`}>
           
           {/* Column 1: Brand & Logo */}
           <div className="flex flex-col items-start gap-4">

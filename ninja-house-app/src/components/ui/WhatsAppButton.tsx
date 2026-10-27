@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom'
 
 export function WhatsAppButton() {
   const [isHovered, setIsHovered] = useState(false)
-  const [isInHero, setIsInHero] = useState(true)
+  const [isVisible, setIsVisible] = useState(false)
   const location = useLocation()
   
   // Format: 51977745003 for Peru (+51 977 745 003)
@@ -13,11 +13,12 @@ export function WhatsAppButton() {
   const whatsappUrl = `https://wa.me/${phone}?text=${message}`
 
   useEffect(() => {
-    // Whenever the route changes, start in hidden hero state
-    setIsInHero(true)
+    // Whenever the route changes, start hidden while content loads
+    setIsVisible(false)
 
-    const checkHeroVisibility = () => {
-      // Find any hero element on the current page
+    const checkVisibility = () => {
+      // 1. Check Hero visibility (hide if user is still in the hero section)
+      let inHero = false
       const heroElement = 
         document.querySelector('[data-hero="true"]') ||
         document.getElementById('hero') ||
@@ -25,39 +26,52 @@ export function WhatsAppButton() {
 
       if (heroElement) {
         const rect = heroElement.getBoundingClientRect()
-        // If the bottom of the hero is still near or within the viewport, stay hidden
-        setIsInHero(rect.bottom > 120)
+        inHero = rect.bottom > 120
       } else {
-        // Fallback: check if scroll position is in the top hero zone (< 450px)
         const scrollY = window.scrollY || document.documentElement.scrollTop
-        setIsInHero(scrollY < 450)
+        inHero = scrollY < 450
       }
+
+      // 2. Check Footer visibility (hide if footer enters viewport to avoid covering artwork/elements)
+      let inFooter = false
+      const footerElement = document.querySelector('footer')
+      if (footerElement) {
+        const fRect = footerElement.getBoundingClientRect()
+        // If the top of the footer is within or above the viewport bottom margin
+        inFooter = fRect.top < (window.innerHeight - 30) && fRect.bottom > 0
+      }
+
+      setIsVisible(!inHero && !inFooter)
     }
 
     // Run check initially and shortly after DOM paint
-    checkHeroVisibility()
-    const timer = setTimeout(checkHeroVisibility, 150)
+    checkVisibility()
+    const timer1 = setTimeout(checkVisibility, 150)
+    const timer2 = setTimeout(checkVisibility, 400)
 
-    window.addEventListener('scroll', checkHeroVisibility, { passive: true })
+    window.addEventListener('scroll', checkVisibility, { passive: true })
+    window.addEventListener('resize', checkVisibility, { passive: true })
     
     // Also hook to Lenis scroll if available
     const lenis = (window as any).lenis
     if (lenis) {
-      lenis.on('scroll', checkHeroVisibility)
+      lenis.on('scroll', checkVisibility)
     }
 
     return () => {
-      clearTimeout(timer)
-      window.removeEventListener('scroll', checkHeroVisibility)
+      clearTimeout(timer1)
+      clearTimeout(timer2)
+      window.removeEventListener('scroll', checkVisibility)
+      window.removeEventListener('resize', checkVisibility)
       if (lenis) {
-        lenis.off('scroll', checkHeroVisibility)
+        lenis.off('scroll', checkVisibility)
       }
     }
   }, [location.pathname])
 
   return (
     <AnimatePresence>
-      {!isInHero && (
+      {isVisible && (
         <motion.aside
           initial={{ opacity: 0, scale: 0.8, y: 30 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
