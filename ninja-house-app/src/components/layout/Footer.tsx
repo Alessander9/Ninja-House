@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 // SVG Social Icons
 const InstagramIcon = () => (
@@ -57,6 +57,99 @@ const socials = [
 
 export function Footer() {
   const [copied, setCopied] = useState(false)
+  const location = useLocation()
+  const isAnimeRamen = location.pathname.includes('animes-y-ramen')
+  const isOverhead = location.pathname.includes('overhead') || location.pathname.includes('over-head')
+  const isFrikis = location.pathname.includes('frikis-de-m') || location.pathname.includes('frikisdem') || location.pathname.includes('freakuencia')
+  const isPlastico = location.pathname.includes('maldito-plastico') || location.pathname.includes('malditoplastico')
+  const isCineInfarto = location.pathname.includes('cine-infarto') || location.pathname.includes('cineinfarto')
+  const isPlanoOscuro = location.pathname.includes('el-plano-oscuro') || location.pathname.includes('plan-oscuro') || location.pathname.includes('lado-oscuro')
+
+  const programConfig = isAnimeRamen ? {
+    logo: '/assets/animesRamen_logo.webp',
+    alt: 'Animes y Ramen',
+    logoDropShadow: 'drop-shadow-[0_4px_16px_rgba(198,162,230,0.35)]',
+    title: <>ANIMES <span className="text-[#C6A2E6]">& RAMEN</span></>,
+    tagline: 'Dojo Otaku Oficial',
+    desc: 'El espacio definitivo de Ninja House dedicado al anime, ramen, cultura japonesa y debates sin filtro con Charrita & Ale.',
+    statusDot: 'bg-[#C6A2E6]',
+    statusText: 'DOJO: 🌸 EN VIVO LUNES 9:00 PM',
+    accentColor: '#C6A2E6',
+    hoverTextClass: 'hover:text-[#C6A2E6]',
+    topButtonText: 'Subir al Dojo 🍜',
+    copyright: 'Animes y Ramen · Ninja House',
+    liveNotice: '🌸 Transmisiones oficiales en vivo por YouTube cada lunes.',
+  } : isOverhead ? {
+    logo: '/assets/OVERHEAD_LOGO.png',
+    alt: 'Over Head',
+    logoDropShadow: 'drop-shadow-[0_4px_16px_rgba(37,99,235,0.4)]',
+    title: <>OVER <span className="text-[#2563EB]">HEAD</span></>,
+    tagline: 'Dojo Wrestling Oficial',
+    desc: 'El espacio definitivo de Ninja House dedicado a la lucha libre, WWE, rivalidades y combates históricos con Umano, Gianco y Luchito.',
+    statusDot: 'bg-[#2563EB]',
+    statusText: 'DOJO: 🤼 EN VIVO MARTES 9:00 PM',
+    accentColor: '#38BDF8',
+    hoverTextClass: 'hover:text-[#38BDF8]',
+    topButtonText: 'Subir al Ring 🤼',
+    copyright: 'Over Head · Ninja House',
+    liveNotice: '🤼 Transmisiones oficiales en vivo por YouTube cada martes.',
+  } : isFrikis ? {
+    logo: '/assets/FrikisDeM_Logo.png',
+    alt: 'Frikis de M',
+    logoDropShadow: 'drop-shadow-[0_4px_16px_rgba(22,163,74,0.4)]',
+    title: <>FRIKIS <span className="text-[#22C55E]">DE M</span></>,
+    tagline: 'Dojo Pop & Memes Oficial',
+    desc: 'Cultura pop, memes, actualidad geek, noticias virales y anécdotas sin filtro con Camu, Umano, D’arranque, Rafomagia y Luchito.',
+    statusDot: 'bg-[#22C55E]',
+    statusText: 'DOJO: 🎮 EN VIVO MIÉRCOLES 9:00 PM',
+    accentColor: '#22C55E',
+    hoverTextClass: 'hover:text-[#22C55E]',
+    topButtonText: 'Subir al Feed 🎮',
+    copyright: 'Frikis de M · Ninja House',
+    liveNotice: '🎮 Transmisiones oficiales en vivo por YouTube cada miércoles.',
+  } : isPlastico ? {
+    logo: '/assets/MALDITOPLASTICO_LOGO.png',
+    alt: 'Maldito Plástico',
+    logoDropShadow: 'drop-shadow-[0_4px_16px_rgba(234,88,12,0.4)]',
+    title: <>MALDITO <span className="text-[#EA580C]">PLÁSTICO</span></>,
+    tagline: 'Dojo Coleccionismo Oficial',
+    desc: 'Coleccionismo, figuras de acción, unboxings, rarezas y nostalgia de juguetes con Markollectibles, Gianco Condemarín y Rafomagia.',
+    statusDot: 'bg-[#EA580C]',
+    statusText: 'DOJO: 🛒 EN VIVO JUEVES 9:00 PM',
+    accentColor: '#F97316',
+    hoverTextClass: 'hover:text-[#F97316]',
+    topButtonText: 'Subir a la Vitrina 🛒',
+    copyright: 'Maldito Plástico · Ninja House',
+    liveNotice: '🛒 Transmisiones oficiales en vivo por YouTube cada jueves.',
+  } : isCineInfarto ? {
+    logo: '/assets/CINEINFARTO_LOGO.png',
+    alt: 'Cine Infarto',
+    logoDropShadow: 'drop-shadow-[0_4px_16px_rgba(220,38,38,0.45)]',
+    title: <>CINE <span className="text-[#DC2626]">INFARTO</span></>,
+    tagline: 'Dojo Terror & Cine Oficial',
+    desc: 'Cine de terror, suspenso, teorías y análisis de películas de culto visto por amantes del género con Carmen Bathory y Andrés Manco.',
+    statusDot: 'bg-[#DC2626]',
+    statusText: 'DOJO: 🎬 EN VIVO VIERNES 9:00 PM',
+    accentColor: '#EF4444',
+    hoverTextClass: 'hover:text-[#EF4444]',
+    topButtonText: 'Subir a la Sala 🎬',
+    copyright: 'Cine Infarto · Ninja House',
+    liveNotice: '🎬 Transmisiones oficiales en vivo por YouTube cada viernes.',
+  } : isPlanoOscuro ? {
+    logo: '/assets/PLAN_OSCURO_LOGO.webp',
+    alt: 'El Plano Oscuro',
+    logoDropShadow: 'drop-shadow-[0_4px_16px_rgba(217,119,6,0.45)]',
+    title: <>EL PLANO <span className="text-[#F59E0B]">OSCURO</span></>,
+    tagline: 'Dojo Misterio & Paranormal Oficial',
+    desc: 'Fenómenos paranormales, terror, leyendas, tarot y misterio espiritual con Adriana Larrea (Mar de Luna) y Sandra (La Suma Sacerdotisa).',
+    statusDot: 'bg-[#F59E0B]',
+    statusText: 'DOJO: 🔮 EN VIVO DOMINGO 9:00 PM',
+    accentColor: '#F59E0B',
+    hoverTextClass: 'hover:text-[#F59E0B]',
+    topButtonText: 'Subir al Altar 🔮',
+    copyright: 'El Plano Oscuro · Ninja House',
+    liveNotice: '🔮 Transmisiones oficiales en vivo por YouTube cada domingo.',
+  } : null
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText('contacto@ninjahouse.com')
@@ -69,50 +162,238 @@ export function Footer() {
   }
 
   return (
-    <footer className="relative bg-ninja-black border-t border-white/5 pt-20 pb-10 px-6 overflow-hidden">
-      {/* Glow Effects */}
-      <div className="absolute bottom-0 right-0 w-[400px] h-[300px] pointer-events-none rounded-full"
-        style={{ background: 'radial-gradient(circle, rgba(103,185,70,0.06) 0%, transparent 70%)', filter: 'blur(70px)' }} />
-      <div className="absolute top-0 left-0 w-[300px] h-[300px] pointer-events-none rounded-full"
-        style={{ background: 'radial-gradient(circle, rgba(90,40,122,0.06) 0%, transparent 70%)', filter: 'blur(60px)' }} />
+    <footer className={`relative ${
+      isAnimeRamen
+        ? 'bg-[#08050e] border-t border-[#C6A2E6]/25'
+        : isOverhead
+        ? 'bg-[#050814] border-t border-[#2563EB]/35'
+        : isFrikis
+        ? 'bg-[#0a0514] border-t border-emerald-500/30'
+        : isPlastico
+        ? 'bg-[#0b0604] border-t border-orange-500/35'
+        : isCineInfarto
+        ? 'bg-[#0a0507] border-t border-red-600/35'
+        : isPlanoOscuro
+        ? 'bg-[#080503] border-t border-amber-600/35'
+        : 'bg-ninja-black border-t border-white/5'
+    } pt-20 sm:pt-24 pb-12 px-6 sm:px-10 overflow-hidden`}>
+      
+      {/* ── CUSTOM FOOTER ARTWORK FOR OVERHEAD (100% ESTIRADO EN TODO EL FOOTER) ── */}
+      {isOverhead && (
+        <>
+          <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0">
+            <img
+              src="/assets/heros/OVERHEADFOOTER.webp"
+              alt="Overhead Footer"
+              className="w-full h-full object-cover object-right-bottom block"
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+            {/* Degradado para que los textos a la izquierda sean 100% legibles */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/80 to-transparent md:w-3/4 pointer-events-none" />
+            <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-ninja-black via-ninja-black/75 to-transparent pointer-events-none" />
+            <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
+          </div>
 
-      {/* Diagonal Line Design Accent */}
-      <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-ninja-green via-ninja-purple to-ninja-yellow opacity-40" />
+          {/* Subtle Ambient Glows */}
+          <div
+            className="absolute bottom-0 right-0 w-[550px] h-[450px] pointer-events-none rounded-full"
+            style={{ background: 'radial-gradient(circle, rgba(37,99,235,0.18) 0%, transparent 70%)', filter: 'blur(80px)' }}
+          />
+          
+          {/* Top Wrestling Accent Line */}
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#2563EB] via-[#60A5FA] to-[#FBBF24]" />
+        </>
+      )}
+
+      {/* ── CUSTOM FOOTER ARTWORK FOR FRIKIS DE M (100% ESTIRADO EN TODO EL FOOTER) ── */}
+      {isFrikis && (
+        <>
+          <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0">
+            <img
+              src="/assets/frikifooter.webp"
+              alt="Frikis de M Footer"
+              className="w-full h-full object-cover object-right-bottom block"
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+            {/* Degradado para que los textos a la izquierda sean 100% legibles */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0a0514]/95 via-[#0a0514]/80 to-transparent md:w-3/4 pointer-events-none" />
+            <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-ninja-black via-ninja-black/70 to-transparent pointer-events-none" />
+            <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
+          </div>
+
+          {/* Subtle Ambient Glows */}
+          <div
+            className="absolute bottom-0 right-0 w-[550px] h-[450px] pointer-events-none rounded-full"
+            style={{ background: 'radial-gradient(circle, rgba(22,163,74,0.18) 0%, transparent 70%)', filter: 'blur(80px)' }}
+          />
+          
+          {/* Top Ninja Green & Purple Accent Line */}
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#16A34A] via-[#22C55E] to-[#A855F7]" />
+        </>
+      )}
+
+      {/* ── CUSTOM FOOTER ARTWORK FOR ANIMES Y RAMEN (100% ESTIRADO EN TODO EL FOOTER) ── */}
+      {isAnimeRamen && (
+        <>
+          {/* Imagen de fondo cubriendo todo el footer */}
+          <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0">
+            <img
+              src="/assets/footer_ramen.webp"
+              alt="Animes & Ramen Footer"
+              className="w-full h-full object-cover object-right-bottom block"
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+            {/* Degradado para que los textos a la izquierda sean 100% legibles */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/75 to-transparent md:w-3/4 pointer-events-none" />
+            <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-ninja-black via-ninja-black/70 to-transparent pointer-events-none" />
+            <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
+          </div>
+
+          {/* Subtle Ambient Glows */}
+          <div
+            className="absolute bottom-0 right-0 w-[550px] h-[450px] pointer-events-none rounded-full"
+            style={{ background: 'radial-gradient(circle, rgba(198,162,230,0.12) 0%, transparent 70%)', filter: 'blur(80px)' }}
+          />
+          
+          {/* Top Sakura Accent Line */}
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#C6A2E6] via-[#F2ADD1] to-[#F1D090]" />
+        </>
+      )}
+
+      {/* ── CUSTOM FOOTER ARTWORK FOR MALDITO PLÁSTICO (100% ESTIRADO EN TODO EL FOOTER) ── */}
+      {isPlastico && (
+        <>
+          <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0">
+            <img
+              src="/assets/plasticofooter.webp"
+              alt="Maldito Plástico Footer"
+              className="w-full h-full object-cover object-right block"
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+            {/* Degradado para que los textos a la izquierda sean 100% legibles */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0b0604]/95 via-[#0b0604]/80 to-transparent md:w-3/4 pointer-events-none" />
+            <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-ninja-black via-ninja-black/70 to-transparent pointer-events-none" />
+            <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
+          </div>
+
+          {/* Subtle Ambient Glows */}
+          <div
+            className="absolute bottom-0 right-0 w-[550px] h-[450px] pointer-events-none rounded-full"
+            style={{ background: 'radial-gradient(circle, rgba(234,88,12,0.2) 0%, transparent 70%)', filter: 'blur(80px)' }}
+          />
+          
+          {/* Top Comic Orange & Amber Accent Line */}
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#EA580C] via-[#F59E0B] to-[#EF4444]" />
+        </>
+      )}
+
+      {/* ── CUSTOM FOOTER ARTWORK FOR CINE INFARTO (100% ESTIRADO EN TODO EL FOOTER) ── */}
+      {isCineInfarto && (
+        <>
+          <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0">
+            <img
+              src="/assets/infartoFooter_opt.webp"
+              alt="Cine Infarto Footer"
+              className="w-full h-full object-cover object-right block"
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+            {/* Degradado para que los textos a la izquierda sean 100% legibles */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0a0507]/95 via-[#0a0507]/80 to-transparent md:w-3/4 pointer-events-none" />
+            <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-ninja-black via-ninja-black/70 to-transparent pointer-events-none" />
+            <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
+          </div>
+
+          {/* Subtle Ambient Glows */}
+          <div
+            className="absolute bottom-0 right-0 w-[550px] h-[450px] pointer-events-none rounded-full"
+            style={{ background: 'radial-gradient(circle, rgba(220,38,38,0.2) 0%, transparent 70%)', filter: 'blur(80px)' }}
+          />
+          
+          {/* Top Crimson & Horror Red Accent Line */}
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#DC2626] via-[#EF4444] to-[#B91C1C]" />
+        </>
+      )}
+
+      {/* ── CUSTOM FOOTER ARTWORK FOR EL PLANO OSCURO (100% ESTIRADO EN TODO EL FOOTER) ── */}
+      {isPlanoOscuro && (
+        <>
+          <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0">
+            <img
+              src="/assets/oscurofooter.webp"
+              alt="El Plano Oscuro Footer"
+              className="w-full h-full object-cover object-right block"
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+            {/* Degradado para que los textos a la izquierda sean 100% legibles */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#080503]/95 via-[#080503]/80 to-transparent md:w-3/4 pointer-events-none" />
+            <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-ninja-black via-ninja-black/70 to-transparent pointer-events-none" />
+            <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
+          </div>
+
+          {/* Subtle Ambient Glows */}
+          <div
+            className="absolute bottom-0 right-0 w-[550px] h-[450px] pointer-events-none rounded-full"
+            style={{ background: 'radial-gradient(circle, rgba(234,179,8,0.18) 0%, transparent 70%)', filter: 'blur(80px)' }}
+          />
+          
+          {/* Top Mystic Gold & Occult Amber Accent Line */}
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#D97706] via-[#F59E0B] to-[#78350F]" />
+        </>
+      )}
+
+      {!isAnimeRamen && !isOverhead && !isFrikis && !isPlastico && !isCineInfarto && !isPlanoOscuro && (
+        <>
+          {/* Default Glow Effects */}
+          <div className="absolute bottom-0 right-0 w-[400px] h-[300px] pointer-events-none rounded-full"
+            style={{ background: 'radial-gradient(circle, rgba(103,185,70,0.06) 0%, transparent 70%)', filter: 'blur(70px)' }} />
+          <div className="absolute top-0 left-0 w-[300px] h-[300px] pointer-events-none rounded-full"
+            style={{ background: 'radial-gradient(circle, rgba(90,40,122,0.06) 0%, transparent 70%)', filter: 'blur(60px)' }} />
+
+          {/* Diagonal Line Design Accent */}
+          <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-ninja-green via-ninja-purple to-ninja-yellow opacity-40" />
+        </>
+      )}
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        
+        {/* Contenido del Footer dentro de la imagen */}
+        <div className={`grid grid-cols-1 md:grid-cols-2 ${programConfig ? 'lg:grid-cols-3 max-w-4xl mr-auto' : 'lg:grid-cols-4'} gap-10 md:gap-12 mb-16`}>
           
           {/* Column 1: Brand & Logo */}
           <div className="flex flex-col items-start gap-4">
             <div className="flex items-center gap-3">
               <motion.img
-                src="/assets/NinjaLOGO.png"
-                alt="Ninja House"
-                className="h-16 w-auto object-contain"
+                src={programConfig ? programConfig.logo : '/assets/NinjaLOGO.png'}
+                alt={programConfig ? programConfig.alt : 'Ninja House'}
+                className={`${programConfig ? `${programConfig.logoDropShadow} h-14 sm:h-16 max-w-[190px]` : 'h-16'} w-auto object-contain`}
                 whileHover={{ scale: 1.05, rotate: -3 }}
               />
               <div>
                 <span className="font-display font-black text-xl text-white tracking-widest block leading-tight">
-                  NINJA <span className="text-red-600">HOUSE</span>
+                  {programConfig ? programConfig.title : (
+                    <>NINJA <span className="text-red-600">HOUSE</span></>
+                  )}
                 </span>
                 <span className="text-[10px] text-white/40 tracking-[0.2em] uppercase font-display">
-                  Dojo Geek Oficial
+                  {programConfig ? programConfig.tagline : 'Dojo Geek Oficial'}
                 </span>
               </div>
             </div>
-            <p className="text-white/40 text-xs font-body leading-relaxed max-w-sm">
-              Tu canal de referencia sobre gaming, anime, cultura pop y coleccionables. Sin filtros, con la mejor comunidad.
+            <p className="text-white/50 text-xs font-body leading-relaxed max-w-sm">
+              {programConfig
+                ? programConfig.desc
+                : 'Tu canal de referencia sobre gaming, anime, cultura pop y coleccionables. Sin filtros, con la mejor comunidad.'}
             </p>
             
-            {/* Dojo Status Indicator */}
+            {/* Status Indicator */}
             <div className="flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded-full mt-2">
               <motion.span 
-                className="w-2 h-2 rounded-full bg-ninja-green"
+                className={`w-2 h-2 rounded-full ${programConfig ? programConfig.statusDot : 'bg-ninja-green'}`}
                 animate={{ opacity: [1, 0.4, 1] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
               />
-              <span className="text-[10px] font-display font-bold text-white/60 tracking-wider">
-                DOJO STATUS: ONLINE
+              <span className="text-[10px] font-display font-bold text-white/70 tracking-wider">
+                {programConfig ? programConfig.statusText : 'DOJO STATUS: ONLINE'}
               </span>
             </div>
           </div>
@@ -120,79 +401,69 @@ export function Footer() {
           {/* Column 2: Navigation */}
           <div>
             <h4 className="font-display font-black text-sm text-white tracking-widest uppercase mb-6 relative w-fit">
-              Navegación
-              <span className="absolute -bottom-1 left-0 w-8 h-0.5 bg-ninja-green rounded-full" />
+              {programConfig ? 'Explorar' : 'Navegación'}
+              <span 
+                className="absolute -bottom-1 left-0 w-8 h-0.5 rounded-full"
+                style={{ backgroundColor: programConfig ? programConfig.accentColor : '#10B981' }}
+              />
             </h4>
             <ul className="flex flex-col gap-3 font-display text-sm text-white/55">
               {[
-                { label: 'Inicio', href: '#hero' },
-                // { label: 'Dojo Drops', href: '#collectibles' },
-                { label: 'Programas', href: '#programs' },
-                { label: 'Métricas de Autoridad', href: '#metrics' },
-                { label: 'Redes Sociales', href: '#social' }
+                { label: 'Inicio', href: '/' },
+                { label: 'Ver todos los programas', href: '/programas' },
+                { label: 'Animes y Ramen (Lunes)', href: '/programa/animes-y-ramen' },
+                { label: 'Over Head (Martes)', href: '/programa/overhead' },
+                { label: 'Frikis de M (Miércoles)', href: '/programa/frikis-de-m' },
+                { label: 'Maldito Plástico (Jueves)', href: '/programa/maldito-plastico' },
+                { label: 'Cine Infarto (Viernes)', href: '/programa/cine-infarto' },
+                { label: 'El Plano Oscuro (Domingo)', href: '/programa/el-plano-oscuro' },
               ].map((link) => (
                 <li key={link.label}>
-                  <a 
-                    href={link.href} 
-                    className="hover:text-ninja-green hover:pl-2 transition-all duration-300 inline-flex items-center gap-1 group"
-                  >
-                    <span className="opacity-0 group-hover:opacity-100 transition-opacity text-ninja-green">›</span>
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Column 3: Our Shows */}
-          <div>
-            <h4 className="font-display font-black text-sm text-white tracking-widest uppercase mb-6 relative w-fit">
-              Nuestros Shows
-              <span className="absolute -bottom-1 left-0 w-8 h-0.5 bg-ninja-purple rounded-full" />
-            </h4>
-            <ul className="flex flex-col gap-3 font-display text-sm text-white/55">
-              {[
-                { label: '🍜 Lunes: Animes y Ramen', href: '/programa/animes-y-ramen' },
-                { label: '🌐 Martes: Overhead', href: '/programa/overhead' },
-                { label: '🎙️ Miércoles: FrikisDeM', href: '/programa/frikisdem' },
-                { label: '🧸 Jueves: Maldito Plástico', href: '/programa/maldito-plastico' },
-                { label: '🎬 Viernes: Cine Infarto', href: '/programa/cine-infarto' },
-                { label: '🕯️ Sábado: Plan Oscuro', href: '/programa/plan-oscuro' }
-              ].map((show) => (
-                <li key={show.label}>
                   <Link 
-                    to={show.href} 
-                    className="hover:text-ninja-purple hover:pl-2 transition-all duration-300 inline-block"
+                    to={link.href} 
+                    className="hover:pl-2 transition-all duration-300 inline-flex items-center gap-1 group text-white/60 hover:text-white"
                   >
-                    {show.label}
+                    <span 
+                      className="opacity-0 group-hover:opacity-100 transition-opacity"
+                      style={{ color: programConfig ? programConfig.accentColor : '#10B981' }}
+                    >›</span>
+                    {link.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Column 4: Contact / Newsletter */}
+          {/* Column 3: Contact Dojo */}
           <div>
             <h4 className="font-display font-black text-sm text-white tracking-widest uppercase mb-6 relative w-fit">
-              Contacto Dojo
-              <span className="absolute -bottom-1 left-0 w-8 h-0.5 bg-ninja-yellow rounded-full" />
+              {programConfig ? 'Auspicios & Contacto' : 'Contacto Dojo'}
+              <span 
+                className="absolute -bottom-1 left-0 w-8 h-0.5 rounded-full"
+                style={{ backgroundColor: programConfig ? programConfig.accentColor : '#F59E0B' }}
+              />
             </h4>
             <p className="text-white/40 text-xs font-body leading-relaxed mb-4">
-              ¿Quieres colaborar o tienes alguna propuesta para el canal? ¡Escríbenos directamente!
+              {programConfig
+                ? `¿Quieres auspiciar ${programConfig.alt} o proponer alguna colaboración especial? ¡Escríbenos directamente!`
+                : '¿Quieres colaborar o tienes alguna propuesta para el canal? ¡Escríbenos directamente!'}
             </p>
             
             {/* Copy Email Button */}
             <button
               onClick={handleCopyEmail}
-              className="flex items-center justify-between w-full px-4 py-3 bg-white/5 border border-white/10 hover:border-ninja-green/50 hover:bg-ninja-green/5 rounded-xl transition-all duration-300 text-left font-display group"
+              className="flex items-center justify-between w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl transition-all duration-300 text-left font-display group hover:border-white/20 hover:bg-white/10"
             >
               <div className="flex flex-col">
-                <span className="text-[10px] text-white/30 tracking-wider">EMAIL DE CONTACTO</span>
-                <span className="text-xs text-white/80 font-bold group-hover:text-ninja-green transition-colors">
+                <span className="text-[10px] text-white/30 tracking-wider">EMAIL OFICIAL</span>
+                <span className="text-xs text-white/80 font-bold transition-colors group-hover:text-white">
                   contacto@ninjahouse.com
                 </span>
               </div>
-              <span className="text-xs text-ninja-green font-bold">
+              <span 
+                className="text-xs font-bold"
+                style={{ color: programConfig ? programConfig.accentColor : '#10B981' }}
+              >
                 {copied ? '¡Copiado!' : 'Copiar'}
               </span>
             </button>
@@ -208,11 +479,11 @@ export function Footer() {
           
           {/* Copyright */}
           <div className="text-center md:text-left">
-            <p className="text-white/30 text-xs font-body">
-              © {new Date().getFullYear()} Ninja House. Todos los derechos reservados.
+            <p className="text-white/40 text-xs font-body">
+              © {new Date().getFullYear()} {programConfig ? `${programConfig.copyright}. Todos los derechos reservados.` : 'Ninja House. Todos los derechos reservados.'}
             </p>
-            <p className="text-[10px] text-white/20 mt-1 font-body">
-              Desarrollado con estética urbana & neón geek.
+            <p className="text-[10px] text-white/25 mt-1 font-body">
+              {programConfig ? programConfig.liveNotice : 'Desarrollado con estética urbana & neón geek.'}
             </p>
           </div>
 
@@ -229,10 +500,10 @@ export function Footer() {
                 whileHover={{ 
                   scale: 1.15, 
                   rotate: 8, 
-                  borderColor: s.color, 
-                  color: s.color,
-                  boxShadow: `0 0 15px ${s.color}40`,
-                  backgroundColor: `${s.color}10` 
+                  borderColor: programConfig ? programConfig.accentColor : s.color, 
+                  color: programConfig ? programConfig.accentColor : s.color, 
+                  boxShadow: `0 0 15px ${programConfig ? programConfig.accentColor + '50' : s.color + '40'}`,
+                  backgroundColor: programConfig ? programConfig.accentColor + '15' : `${s.color}10` 
                 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: 'spring', stiffness: 350, damping: 15 }}
@@ -245,21 +516,22 @@ export function Footer() {
           {/* Back to top */}
           <motion.button
             onClick={scrollToTop}
-            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:border-ninja-green/50 hover:bg-ninja-green/5 transition-all text-xs font-display text-white/60 hover:text-ninja-green group"
+            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/10 transition-all text-xs font-display text-white/60 hover:text-white hover:border-white/20 hover:bg-white/10 group"
             whileHover={{ y: -3 }}
             whileTap={{ scale: 0.95 }}
           >
-            <span>Subir al Dojo</span>
+            <span>{programConfig ? programConfig.topButtonText : 'Subir al Dojo'}</span>
             <motion.span 
               className="inline-block"
               animate={{ y: [0, -3, 0] }}
               transition={{ duration: 1.2, repeat: Infinity }}
+              style={{ color: programConfig ? programConfig.accentColor : '#10B981' }}
             >
               ▲
             </motion.span>
           </motion.button>
-
         </div>
+
       </div>
     </footer>
   )

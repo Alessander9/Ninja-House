@@ -3,13 +3,14 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import './styles/globals.css'
 import { useLenis } from './hooks/useLenis'
 import { LoadingScreen } from './components/ui/LoadingScreen'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Navbar } from './components/layout/Navbar'
 import { Footer } from './components/layout/Footer'
 
 // Sections
 import { HeroSection } from './components/hero/HeroSection'
 import { AboutSection } from './components/about/AboutSection'
-import { LiveNowSection } from './components/live/LiveNowSection'
+// import { LiveNowSection } from './components/live/LiveNowSection'
 // import { CollectiblesSection } from './components/collectibles/CollectiblesSection'
 import { ProgramsSection } from './components/programs/ProgramsSection'
 import { MetricsSection } from './components/metrics/MetricsSection'
@@ -23,6 +24,7 @@ import { ProgramsPage } from './pages/ProgramsPage'
 import { ContactPage } from './pages/ContactPage'
 import { ProgramDetailPage } from './components/programs/ProgramDetailPage'
 import { WhatsAppButton } from './components/ui/WhatsAppButton'
+import { PromoVideo } from './video/PromoVideo'
 
 // Helper component to scroll to top or anchor with Lenis
 function ScrollToTop() {
@@ -64,8 +66,10 @@ function LandingPage() {
       <div className="h-px bg-gradient-to-r from-transparent via-red-700/20 to-transparent" />
       <ProgramsSection />
 
+      {/*
       <div className="h-px bg-gradient-to-r from-transparent via-red-600/20 to-transparent" />
       <LiveNowSection />
+      */}
       
       {/*
       <div className="h-px bg-gradient-to-r from-transparent via-red-700/20 to-transparent" />
@@ -98,7 +102,14 @@ function AppContent() {
 
   useEffect(() => {
     // Show loading screen for 2.8s then fade out
-    const timer = setTimeout(() => setIsLoading(false), 2800)
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+      setTimeout(() => {
+        const lenis = (window as any).lenis
+        if (lenis) lenis.resize()
+        ScrollTrigger.refresh()
+      }, 150)
+    }, 2800)
     return () => clearTimeout(timer)
   }, [])
 
@@ -121,10 +132,16 @@ function AppContent() {
   )
 }
 
+// /video se renderiza fuera del shell del sitio (sin navbar, loader ni Lenis)
+function Shell() {
+  const { pathname } = useLocation()
+  return pathname.startsWith('/video') ? <PromoVideo /> : <AppContent />
+}
+
 function App() {
   return (
     <Router>
-      <AppContent />
+      <Shell />
     </Router>
   )
 }

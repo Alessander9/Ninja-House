@@ -11,10 +11,13 @@ const hoverColorMap: Record<string, string> = {
   'animes-y-ramen': '#C6A2E6',
   'overhead': '#2563EB',
   'frikisdem': '#16A34A',
+  'frikis-de-m': '#16A34A',
   'freakuencia-m': '#16A34A',
   'maldito-plastico': '#EA580C',
   'cine-infarto': '#DC2626',
   'plan-oscuro': '#9333EA',
+  'el-plano-oscuro': '#9333EA',
+  'el-lado-oscuro': '#9333EA',
 }
 
 export function ProgramsSection() {
@@ -69,12 +72,11 @@ export function ProgramsSection() {
         {/* 2 rows of 3 cards on desktop */}
         <div className="programs-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {orderedPrograms.map((program) => {
-            const programUrlId = program.title.toLowerCase().replace(/\s+/g, '-').normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-            const hoverColor = hoverColorMap[program.id] || program.color
+            const hoverColor = hoverColorMap[program.slug] || hoverColorMap[program.id] || program.color
             return (
               <Link 
                 key={program.id} 
-                to={`/programa/${programUrlId}`}
+                to={`/programa/${program.slug}`}
                 className="program-card block h-full"
               >
                 <motion.div
@@ -98,20 +100,28 @@ export function ProgramsSection() {
                     style={{ background: `linear-gradient(to right, ${program.color}, ${program.color}60, transparent)` }}
                   />
 
-                  {/* Image/Logo Container with aspect ratio */}
-                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-gradient-to-b from-black/80 via-neutral-900/60 to-black/90 flex items-center justify-center p-6 flex-shrink-0 border-b border-white/5">
-                    {/* Background glow behind logo */}
-                    <div
-                      className="absolute inset-0 opacity-20 pointer-events-none group-hover:opacity-40 transition-opacity duration-300"
-                      style={{ background: `radial-gradient(circle at 50% 50%, ${program.color} 0%, transparent 70%)` }}
-                    />
+                  {/* Video/Media Container with aspect ratio */}
+                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-neutral-950 flex items-center justify-center flex-shrink-0 border-b border-white/5">
+                    {program.heroVideo ? (
+                      <video
+                        src={program.heroVideo}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    ) : (
+                      <img 
+                        src={program.image} 
+                        alt={program.title} 
+                        className="max-h-[110px] sm:max-h-[125px] w-auto max-w-[80%] object-contain transition-transform duration-500 group-hover:scale-108 drop-shadow-[0_8px_20px_rgba(0,0,0,0.85)] z-10"
+                      />
+                    )}
                     
-                    <img 
-                      src={program.image} 
-                      alt={program.title} 
-                      className="max-h-[110px] sm:max-h-[125px] w-auto max-w-[80%] object-contain transition-transform duration-500 group-hover:scale-108 drop-shadow-[0_8px_20px_rgba(0,0,0,0.85)] z-10"
-                    />
-                    
+                    {/* Dark gradient overlay for contrast and sleek finish */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/25 pointer-events-none" />
+
                     {/* Category floating badge */}
                     <span
                       className="absolute bottom-3 left-3 text-[10.5px] font-bold font-display px-2.5 py-0.5 rounded tracking-wider uppercase z-10 backdrop-blur-md"

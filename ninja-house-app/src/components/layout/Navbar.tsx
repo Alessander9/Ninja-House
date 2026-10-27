@@ -47,30 +47,82 @@ export function Navbar() {
       e.preventDefault()
       const element = document.getElementById(link.anchorId || '')
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
+        const lenis = (window as any).lenis
+        if (lenis) {
+          lenis.scrollTo(element, { offset: -70, duration: 1.2 })
+        } else {
+          element.scrollIntoView({ behavior: 'smooth' })
+        }
       }
     }
   }
 
+  const isAnimeRamen = location.pathname.includes('animes-y-ramen')
+  const isOverhead = location.pathname.includes('overhead') || location.pathname.includes('over-head')
+  const isFrikis = location.pathname.includes('frikis-de-m') || location.pathname.includes('frikisdem') || location.pathname.includes('freakuencia')
+  const isPlastico = location.pathname.includes('maldito-plastico') || location.pathname.includes('malditoplastico')
+  const isCineInfarto = location.pathname.includes('cine-infarto') || location.pathname.includes('cineinfarto')
+  const isPlanoOscuro = location.pathname.includes('el-plano-oscuro') || location.pathname.includes('plan-oscuro') || location.pathname.includes('lado-oscuro')
+
+  const currentProgram = isAnimeRamen ? {
+    name: 'Animes y Ramen',
+    logo: '/assets/animesRamen_logo.webp',
+    accentColor: '#C6A2E6',
+    borderClass: 'border-[#C6A2E6]/25',
+    logoClass: 'h-10 sm:h-11',
+  } : isOverhead ? {
+    name: 'Over Head',
+    logo: '/assets/OVERHEAD_LOGO.png',
+    accentColor: '#38BDF8',
+    borderClass: 'border-[#2563EB]/25',
+    logoClass: 'h-10 sm:h-11',
+  } : isFrikis ? {
+    name: 'Frikis de M',
+    logo: '/assets/FrikisDeM_Logo.png',
+    accentColor: '#22C55E',
+    borderClass: 'border-emerald-500/25',
+    logoClass: 'h-10 sm:h-11',
+  } : isPlastico ? {
+    name: 'Maldito Plástico',
+    logo: '/assets/MALDITOPLASTICO_LOGO.png',
+    accentColor: '#F97316',
+    borderClass: 'border-orange-500/25',
+    logoClass: 'h-10 sm:h-11',
+  } : isCineInfarto ? {
+    name: 'Cine Infarto',
+    logo: '/assets/CINEINFARTO_LOGO.png',
+    accentColor: '#EF4444',
+    borderClass: 'border-red-600/25',
+    logoClass: 'h-10 sm:h-11',
+  } : isPlanoOscuro ? {
+    name: 'El Plano Oscuro',
+    logo: '/assets/PLAN_OSCURO_LOGO.webp',
+    accentColor: '#F59E0B',
+    borderClass: 'border-amber-500/25',
+    logoClass: 'h-10 sm:h-11',
+  } : null
+
   return (
     <nav
       ref={navRef}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled || location.pathname !== '/'
-          ? 'bg-ninja-black/95 backdrop-blur-xl border-b border-red-600/20 shadow-lg shadow-black/50'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        currentProgram
+          ? `bg-black/40 backdrop-blur-md border-b ${currentProgram.borderClass} shadow-md shadow-black/25`
+          : scrolled || location.pathname !== '/'
+          ? 'bg-ninja-black/45 backdrop-blur-md border-b border-white/10 shadow-md shadow-black/30'
           : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+        <div className="flex items-center justify-between h-14">
           
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
             <motion.img
-              src="/assets/NinjaLOGO.png"
-              alt="Ninja House"
-              className="h-10 w-auto object-contain"
-              whileHover={{ scale: 1.08, rotate: -3 }}
+              src={currentProgram ? currentProgram.logo : '/assets/NinjaLOGO.png'}
+              alt={currentProgram ? `${currentProgram.name} — Ninja House` : 'Ninja House'}
+              className={`${currentProgram ? `${currentProgram.logoClass} max-w-[170px] sm:max-w-[210px]` : 'h-8 sm:h-9'} w-auto object-contain drop-shadow-md`}
+              whileHover={{ scale: 1.06, rotate: -2 }}
               transition={{ type: 'spring', stiffness: 400 }}
             />
           </Link>
@@ -82,13 +134,15 @@ export function Navbar() {
                 key={link.label}
                 to={link.href}
                 onClick={(e) => handleLinkClick(e, link)}
-                className={`relative px-4 py-2 text-sm font-display font-bold transition-colors duration-200 group ${
-                  location.pathname === link.href ? 'text-red-500' : 'text-white/70 hover:text-red-500'
-                }`}
+                className="relative px-4 py-1.5 text-sm font-display font-bold transition-colors duration-200 group text-white/70 hover:text-white"
+                style={{
+                  color: location.pathname === link.href ? (currentProgram?.accentColor || '#EF4444') : undefined
+                }}
               >
-                {link.label}
+                <span>{link.label}</span>
                 <motion.span
-                  className={`absolute bottom-0 left-0 right-0 h-0.5 bg-red-600 origin-left`}
+                  className="absolute bottom-0 left-0 right-0 h-0.5 origin-left"
+                  style={{ backgroundColor: currentProgram?.accentColor || '#DC2626' }}
                   initial={{ scaleX: location.pathname === link.href ? 1 : 0 }}
                   whileHover={{ scaleX: 1 }}
                   transition={{ duration: 0.2 }}
@@ -144,7 +198,10 @@ export function Navbar() {
                   className={`px-4 py-3 font-display font-semibold text-lg border-b border-white/5 transition-colors ${
                     location.pathname === link.href ? 'text-red-500' : 'text-white/80 hover:text-red-500'
                   }`}
-                  style={{ transitionDelay: `${i * 0.05}s` }}
+                  style={{ 
+                    transitionDelay: `${i * 0.05}s`,
+                    color: location.pathname === link.href && currentProgram ? currentProgram.accentColor : undefined
+                  }}
                 >
                   {link.label}
                 </Link>

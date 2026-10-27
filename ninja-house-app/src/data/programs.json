@@ -38,7 +38,12 @@
         "shape": "circle",
         "icon": "ramen"
       },
-      "themes": ["anime", "manga", "cultura-japonesa", "otaku"],
+      "themes": [
+        "anime",
+        "manga",
+        "cultura-japonesa",
+        "otaku"
+      ],
       "engagement": "Alto",
       "status": "active"
     },
@@ -79,7 +84,11 @@
         "style": "bold",
         "icon": "hitman"
       },
-      "themes": ["videojuegos", "gaming", "entretenimiento"],
+      "themes": [
+        "videojuegos",
+        "gaming",
+        "entretenimiento"
+      ],
       "presenters": 3,
       "status": "active"
     },
@@ -119,9 +128,17 @@
         "icon": "microphone",
         "color": "green"
       },
-      "themes": ["entretenimiento", "cultura-pop", "conversacion"],
+      "themes": [
+        "entretenimiento",
+        "cultura-pop",
+        "conversacion"
+      ],
       "presenters": 3,
-      "characteristicColors": ["pink", "orange", "green"],
+      "characteristicColors": [
+        "pink",
+        "orange",
+        "green"
+      ],
       "status": "active"
     },
     {
@@ -161,9 +178,18 @@
         "color": "orange",
         "style": "bold"
       },
-      "themes": ["coleccionables", "accion-figures", "juguetes", "toys"],
+      "themes": [
+        "coleccionables",
+        "accion-figures",
+        "juguetes",
+        "toys"
+      ],
       "presenters": 3,
-      "characteristicColors": ["red", "green", "pink"],
+      "characteristicColors": [
+        "red",
+        "green",
+        "pink"
+      ],
       "status": "active"
     },
     {
@@ -201,7 +227,12 @@
         "icon": "film-camera",
         "color": "red"
       },
-      "themes": ["cine", "películas", "cinematografía", "reviews"],
+      "themes": [
+        "cine",
+        "películas",
+        "cinematografía",
+        "reviews"
+      ],
       "presenters": 2,
       "style": "sophisticated",
       "status": "active"
@@ -258,7 +289,12 @@
         "style": "bold",
         "icon": "dice"
       },
-      "themes": ["dungeon-dragons", "D&D", "juego-rol", "fantasia"],
+      "themes": [
+        "dungeon-dragons",
+        "D&D",
+        "juego-rol",
+        "fantasia"
+      ],
       "presenters": 5,
       "interactive": true,
       "audienceParticipation": true,
@@ -283,7 +319,13 @@
   "metadata": {
     "totalPrograms": 6,
     "totalTalents": 15,
-    "broadcastDays": ["monday", "wednesday", "thursday", "friday", "sunday"],
+    "broadcastDays": [
+      "monday",
+      "wednesday",
+      "thursday",
+      "friday",
+      "sunday"
+    ],
     "contact": "Contacto@ninjahouseshow.com",
     "followers": {
       "total": "165000+",

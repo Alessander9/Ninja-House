@@ -16,170 +16,25 @@ export interface YouTubeEpisode {
   link: string
 }
 
-export const youtubePlaylistMap: Record<string, { videoId: string; playlistId: string; defaultVideos: YouTubeEpisode[] }> = {
-  'animes-y-ramen': {
-    videoId: 'MfGF4qEWPfo',
-    playlistId: 'PLgJo52LEdumEV68Jtlh6yb85qpnkWTiu9',
-    defaultVideos: [
-      {
-        id: 'MfGF4qEWPfo',
-        videoId: 'MfGF4qEWPfo',
-        title: 'ANIMES Y RAMEN — Estreno Oficial, Análisis & Cultura Otaku',
-        thumbnail: 'https://i.ytimg.com/vi/MfGF4qEWPfo/hqdefault.jpg',
-        duration: 'En vivo',
-        views: '14.8K vistas',
-        date: 'Reciente',
-        link: 'https://www.youtube.com/watch?v=MfGF4qEWPfo'
-      },
-      {
-        id: '1sX8eQp9mY0',
-        videoId: 'MfGF4qEWPfo',
-        title: 'Debate Otaku: ¿Los mejores Shonen de la temporada?',
-        thumbnail: 'https://i.ytimg.com/vi/MfGF4qEWPfo/mqdefault.jpg',
-        duration: 'Episodio',
-        views: '11.2K vistas',
-        date: 'Hace 1 semana',
-        link: 'https://www.youtube.com/watch?v=MfGF4qEWPfo'
-      }
-    ]
-  },
-  overhead: {
-    videoId: 'GE65nGF7nro',
-    playlistId: 'PLgJo52LEdumHAeSzH3v4FvJ9hhNckyNwh',
-    defaultVideos: [
-      {
-        id: 'GE65nGF7nro',
-        videoId: 'GE65nGF7nro',
-        title: 'OVERHEAD — Lucha Libre Profesional & Debate en Vivo',
-        thumbnail: 'https://i.ytimg.com/vi/GE65nGF7nro/hqdefault.jpg',
-        duration: 'En vivo',
-        views: '18.4K vistas',
-        date: 'Reciente',
-        link: 'https://www.youtube.com/watch?v=GE65nGF7nro'
-      },
-      {
-        id: '2kL9xQp5mZ1',
-        videoId: 'GE65nGF7nro',
-        title: 'Análisis Wrestlemania & WWE vs AEW Rivalidades',
-        thumbnail: 'https://i.ytimg.com/vi/GE65nGF7nro/mqdefault.jpg',
-        duration: 'Episodio',
-        views: '13.1K vistas',
-        date: 'Hace 1 semana',
-        link: 'https://www.youtube.com/watch?v=GE65nGF7nro'
-      }
-    ]
-  },
-  frikisdem: {
-    videoId: '9VoUqGLVP7o',
-    playlistId: 'PLgJo52LEdumFciDx_fFD5gBXAgdsgeqsm',
-    defaultVideos: [
-      {
-        id: '9VoUqGLVP7o',
-        videoId: '9VoUqGLVP7o',
-        title: 'FRIKISDEM — Cultura Pop, Tendencias y Memes en Vivo',
-        thumbnail: 'https://i.ytimg.com/vi/9VoUqGLVP7o/hqdefault.jpg',
-        duration: 'En vivo',
-        views: '21.5K vistas',
-        date: 'Reciente',
-        link: 'https://www.youtube.com/watch?v=9VoUqGLVP7o'
-      },
-      {
-        id: '3bX8nL1qZ4e',
-        videoId: '9VoUqGLVP7o',
-        title: 'Las noticias geek más virales de la semana sin filtro',
-        thumbnail: 'https://i.ytimg.com/vi/9VoUqGLVP7o/mqdefault.jpg',
-        duration: 'Episodio',
-        views: '16.8K vistas',
-        date: 'Hace 1 semana',
-        link: 'https://www.youtube.com/watch?v=9VoUqGLVP7o'
-      }
-    ]
-  },
-  'freakuencia-m': {
-    videoId: '9VoUqGLVP7o',
-    playlistId: 'PLgJo52LEdumFciDx_fFD5gBXAgdsgeqsm',
-    defaultVideos: [
-      {
-        id: '9VoUqGLVP7o',
-        videoId: '9VoUqGLVP7o',
-        title: 'FRIKISDEM — Cultura Pop, Tendencias y Memes en Vivo',
-        thumbnail: 'https://i.ytimg.com/vi/9VoUqGLVP7o/hqdefault.jpg',
-        duration: 'En vivo',
-        views: '21.5K vistas',
-        date: 'Reciente',
-        link: 'https://www.youtube.com/watch?v=9VoUqGLVP7o'
-      }
-    ]
-  },
-  'maldito-plastico': {
-    videoId: '3D0tgWkWElY',
-    playlistId: 'PLgJo52LEdumGIauQLoowiu1Z_-1ecRPWO',
-    defaultVideos: [
-      {
-        id: '3D0tgWkWElY',
-        videoId: '3D0tgWkWElY',
-        title: 'MALDITO PLÁSTICO — Coleccionismo, Figuras de Acción & Unboxings',
-        thumbnail: 'https://i.ytimg.com/vi/3D0tgWkWElY/hqdefault.jpg',
-        duration: 'En vivo',
-        views: '12.9K vistas',
-        date: 'Reciente',
-        link: 'https://www.youtube.com/watch?v=3D0tgWkWElY'
-      },
-      {
-        id: '4mP1vL8xQ2e',
-        videoId: '3D0tgWkWElY',
-        title: 'Cacería de figuras vintage y colecciones millonarias',
-        thumbnail: 'https://i.ytimg.com/vi/3D0tgWkWElY/mqdefault.jpg',
-        duration: 'Episodio',
-        views: '15.4K vistas',
-        date: 'Hace 1 semana',
-        link: 'https://www.youtube.com/watch?v=3D0tgWkWElY'
-      }
-    ]
-  },
-  'cine-infarto': {
-    videoId: 'zCrhYqLR3lI',
-    playlistId: 'PLgJo52LEdumGeZB-gvWDRNOKCEvAo9cBd',
-    defaultVideos: [
-      {
-        id: 'zCrhYqLR3lI',
-        videoId: 'zCrhYqLR3lI',
-        title: 'CINE INFARTO — Cine, Thrillers, Series & Misterio en Vivo',
-        thumbnail: 'https://i.ytimg.com/vi/zCrhYqLR3lI/hqdefault.jpg',
-        duration: 'En vivo',
-        views: '19.7K vistas',
-        date: 'Reciente',
-        link: 'https://www.youtube.com/watch?v=zCrhYqLR3lI'
-      },
-      {
-        id: '5kX9mL2vP7a',
-        videoId: 'zCrhYqLR3lI',
-        title: 'Top películas perturbadoras y teorías cinematográficas',
-        thumbnail: 'https://i.ytimg.com/vi/zCrhYqLR3lI/mqdefault.jpg',
-        duration: 'Episodio',
-        views: '14.2K vistas',
-        date: 'Hace 1 semana',
-        link: 'https://www.youtube.com/watch?v=zCrhYqLR3lI'
-      }
-    ]
-  },
-  'plan-oscuro': {
-    videoId: 'zCrhYqLR3lI',
-    playlistId: 'PLgJo52LEdumGeZB-gvWDRNOKCEvAo9cBd',
-    defaultVideos: [
-      {
-        id: 'zCrhYqLR3lI',
-        videoId: 'zCrhYqLR3lI',
-        title: 'PLAN OSCURO — Crónicas Paranormales, Archivos Ocultos & Enigmas',
-        thumbnail: 'https://i.ytimg.com/vi/zCrhYqLR3lI/hqdefault.jpg',
-        duration: 'En vivo',
-        views: '17.3K vistas',
-        date: 'Reciente',
-        link: 'https://www.youtube.com/watch?v=zCrhYqLR3lI'
-      }
-    ]
-  }
+export interface YouTubePlaylistConfig {
+  videoId: string
+  playlistId: string
+  playlistUrl?: string
+  defaultVideos: YouTubeEpisode[]
 }
+
+import programsPlaylistsData from '../data/programsPlaylists.json'
+
+export const youtubePlaylistMap: Record<string, YouTubePlaylistConfig> = {
+  ...(programsPlaylistsData as unknown as Record<string, YouTubePlaylistConfig>),
+}
+
+// Aliases garantizados para todas las variantes de rutas
+youtubePlaylistMap['el-plano-oscuro'] = youtubePlaylistMap['plan-oscuro']
+youtubePlaylistMap['el-lado-oscuro'] = youtubePlaylistMap['plan-oscuro']
+youtubePlaylistMap['frikis-de-m'] = youtubePlaylistMap['frikisdem']
+youtubePlaylistMap['freakuencia-m'] = youtubePlaylistMap['frikisdem']
+youtubePlaylistMap['over-head'] = youtubePlaylistMap['overhead']
 
 /**
  * Múltiples proxys CORS para garantizar 100% de disponibilidad al consultar feeds de YouTube
@@ -269,12 +124,31 @@ export async function fetchLiveEpisodes(programSlug: string): Promise<YouTubeEpi
 
   const rssUrl = `https://www.youtube.com/feeds/videos.xml?playlist_id=${playlistInfo.playlistId}`
 
-  // Intentar con la lista de proxys en cascada
+  // 1. Intentar endpoint proxy local primero (Vite dev server o proxy local rápido)
+  try {
+    const localProxyUrl = `/api/youtube-feed?playlist_id=${playlistInfo.playlistId}`
+    const controller = new AbortController()
+    const timeoutId = setTimeout(() => controller.abort(), 4000)
+    const response = await fetch(localProxyUrl, { signal: controller.signal })
+    clearTimeout(timeoutId)
+
+    if (response.ok) {
+      const text = await response.text()
+      const episodes = parseYouTubeRss(text)
+      if (episodes.length > 0) {
+        return episodes
+      }
+    }
+  } catch {
+    // Si no está disponible el proxy local, continuar con proxys públicos
+  }
+
+  // 2. Intentar con la lista de proxys en cascada
   for (const proxyGen of CORS_PROXIES) {
     try {
       const proxyUrl = proxyGen(rssUrl)
       const controller = new AbortController()
-      const timeoutId = setTimeout(() => controller.abort(), 6000)
+      const timeoutId = setTimeout(() => controller.abort(), 5000)
 
       const response = await fetch(proxyUrl, { signal: controller.signal })
       clearTimeout(timeoutId)
@@ -293,6 +167,6 @@ export async function fetchLiveEpisodes(programSlug: string): Promise<YouTubeEpi
     }
   }
 
-  // Fallback garantizado: lista de episodios por defecto enriquecida con miniaturas reales de YouTube
+  // Fallback garantizado: lista de episodios reales pre-sincronizados con miniaturas oficiales de YouTube
   return playlistInfo.defaultVideos
 }

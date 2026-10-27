@@ -88,6 +88,7 @@ export function HeroSection() {
   return (
     <section
       id="hero"
+      data-hero="true"
       className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-16 pb-6"
       style={{
         background: 'radial-gradient(ellipse at 70% 30%, rgba(183,31,29,0.22) 0%, transparent 55%), radial-gradient(ellipse at 20% 70%, rgba(176,26,25,0.1) 0%, transparent 50%), #151515',
@@ -183,7 +184,7 @@ export function HeroSection() {
         </div>
 
         {/* Carousel with compact zoom-out perspective */}
-        <div ref={carouselRef} className="opacity-0 mb-6 min-h-[460px] lg:min-h-[410px] xl:min-h-[450px] w-full">
+        <div ref={carouselRef} className="opacity-0 mb-6 min-h-[470px] lg:min-h-[430px] xl:min-h-[465px] w-full">
           <HeroCarousel />
         </div>
 

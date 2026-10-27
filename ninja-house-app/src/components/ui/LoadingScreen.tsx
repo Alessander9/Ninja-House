@@ -186,7 +186,7 @@ export function LoadingScreen({ isLoading }: LoadingScreenProps) {
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
             {/* Logo Centerpiece with Shurikens & Kanji Seal Rings */}
-            <div className="relative flex items-center justify-center mb-8 sm:mb-10">
+            <div className="relative flex items-center justify-center mb-10 sm:mb-14">
               
               {/* 1. Orbiting Shurikens Circle (Outer Layer) */}
               <motion.div
@@ -244,7 +244,7 @@ export function LoadingScreen({ isLoading }: LoadingScreenProps) {
 
               {/* 3. Deep Crimson Chakra Aura */}
               <motion.div 
-                className="absolute h-[240px] w-[240px] sm:h-[300px] sm:w-[300px] rounded-full bg-red-600/20 blur-3xl pointer-events-none"
+                className="absolute top-6 sm:top-7 h-[240px] w-[240px] sm:h-[300px] sm:w-[300px] rounded-full bg-red-600/20 blur-3xl pointer-events-none"
                 animate={{ scale: [1, 1.25, 1], opacity: [0.6, 1, 0.6] }}
                 transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
               />
@@ -255,7 +255,7 @@ export function LoadingScreen({ isLoading }: LoadingScreenProps) {
                 animate={{ opacity: [0, 0.8, 0] }}
                 transition={{ duration: 2.8, repeat: Infinity, repeatDelay: 1.5 }}
               >
-                <div className="w-[180%] h-0.5 bg-gradient-to-r from-transparent via-white to-transparent transform -rotate-45 translate-x-[-40%] translate-y-[120px] shadow-[0_0_15px_#ffffff]" />
+                <div className="w-[180%] h-0.5 bg-gradient-to-r from-transparent via-white to-transparent transform -rotate-45 translate-x-[-40%] translate-y-[146px] shadow-[0_0_15px_#ffffff]" />
               </motion.div>
 
               {/* 5. Top Shinobi Dojo Seal Tag */}
@@ -269,7 +269,7 @@ export function LoadingScreen({ isLoading }: LoadingScreenProps) {
               <motion.img
                 src="/assets/NinjaLOGO.png"
                 alt="Ninja House"
-                className="relative z-10 h-52 w-52 sm:h-64 sm:w-64 md:h-72 md:w-72 object-contain select-none pointer-events-none drop-shadow-[0_0_45px_rgba(176,26,25,0.6)]"
+                className="relative z-10 top-6 sm:top-7 h-52 w-52 sm:h-64 sm:w-64 md:h-72 md:w-72 object-contain select-none pointer-events-none drop-shadow-[0_0_45px_rgba(176,26,25,0.6)]"
                 animate={{ y: [0, -6, 0] }}
                 transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
               />

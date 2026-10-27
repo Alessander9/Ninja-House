@@ -75,6 +75,11 @@ const MOTIFS: Record<string, MotifItem[]> = {
   ],
 }
 
+MOTIFS['el-plano-oscuro'] = MOTIFS['plan-oscuro']
+MOTIFS['el-lado-oscuro'] = MOTIFS['plan-oscuro']
+MOTIFS['frikis-de-m'] = MOTIFS['frikisdem']
+MOTIFS['over-head'] = MOTIFS['overhead']
+
 export function ProgramMotifs({
   programId,
   theme,

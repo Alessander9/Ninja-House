@@ -15,8 +15,10 @@ export function useLenis() {
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      touchMultiplier: 1.5,
       wheelMultiplier: 1,
+      touchMultiplier: 1.5,
+      anchors: true,
+      autoResize: true,
     })
 
     lenisRef.current = lenis
@@ -32,10 +34,17 @@ export function useLenis() {
     gsap.ticker.add(updateLenis)
     gsap.ticker.lagSmoothing(0)
 
+    const handleResize = () => {
+      lenis.resize()
+      ScrollTrigger.refresh()
+    }
+    window.addEventListener('resize', handleResize)
+
     return () => {
+      window.removeEventListener('resize', handleResize)
+      gsap.ticker.remove(updateLenis)
       lenis.destroy()
       delete (window as any).lenis
-      gsap.ticker.remove(updateLenis)
     }
   }, [])
 

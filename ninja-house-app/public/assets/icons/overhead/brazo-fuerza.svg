@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Power energy lines -->
+  <path d="M47 11L50 6" stroke="#FFD000" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M56 16L61 13" stroke="#FFD000" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M59 26L63 27" stroke="#FFD000" stroke-width="3.5" stroke-linecap="round"/>
+
+  <!-- Flexed Arm Silhouette -->
+  <path d="M10 47C10 47 13 36 20 33C25 31 29 34 33 30C37 26 38 18 45 18C50 18 53 21 54 25C54.8 28.5 52 31 53 34C54 36.5 55 38 54 41C52.5 45 47 45 44 44.5C40 44 37 40 32 42C27 44 21 52 13 53C10.5 53.3 10 47 10 47Z" fill="#FFD000" stroke="#000000" stroke-width="3.8" stroke-linejoin="round"/>
+
+  <!-- Electric Blue Athletic Highlights -->
+  <path d="M37 22C39 19.5 42 19 44 20C47 21.5 48 24.5 47 27" stroke="#078BFF" stroke-width="3" stroke-linecap="round"/>
+  <path d="M22 35C26 33 30 35 34 32" stroke="#078BFF" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M36 34C39 35.5 42 35.5 45 34.5" stroke="#078BFF" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Fist knuckles definition -->
+  <path d="M49 29C51 29 53 30 53 32" stroke="#000000" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M50 35C52 35 53 36 53 38" stroke="#000000" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

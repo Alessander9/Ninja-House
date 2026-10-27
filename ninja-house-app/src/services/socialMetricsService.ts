@@ -6,7 +6,7 @@
 
 import { metricsData, globalMetrics, type Metric } from '../data/metrics'
 
-const METRICS_CACHE_KEY = 'ninja_social_metrics_cache_v1'
+const METRICS_CACHE_KEY = 'ninja_social_metrics_cache_v2'
 const CACHE_TTL = 1000 * 60 * 30 // 30 minutos
 
 export interface SocialMetricsPayload {

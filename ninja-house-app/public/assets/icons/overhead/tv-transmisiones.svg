@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Antennas (Azul Eléctrico con puntas Amarillas) -->
+  <path d="M24 10L32 19L40 10" stroke="#078BFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="23" cy="9" r="2.5" fill="#FFD000" stroke="#000000" stroke-width="2"/>
+  <circle cx="41" cy="9" r="2.5" fill="#FFD000" stroke="#000000" stroke-width="2"/>
+
+  <!-- TV Outer Cabinet (Amarillo Intenso) -->
+  <rect x="8" y="19" width="48" height="35" rx="7" fill="#FFD000" stroke="#000000" stroke-width="3.8"/>
+
+  <!-- Screen Bezel (Azul Eléctrico) -->
+  <rect x="13" y="24" width="31" height="25" rx="3.5" fill="#050811" stroke="#078BFF" stroke-width="2.5"/>
+
+  <!-- Play Symbol (Amarillo Intenso) -->
+  <polygon points="25,30 35,36.5 25,43" fill="#FFD000" stroke="#000000" stroke-width="2" stroke-linejoin="round"/>
+
+  <!-- TV Dials / Controls on Right Side -->
+  <circle cx="49" cy="29" r="3" fill="#078BFF" stroke="#000000" stroke-width="2"/>
+  <circle cx="49" cy="38" r="3" fill="#078BFF" stroke="#000000" stroke-width="2"/>
+  <rect x="46" y="44" width="6" height="2.5" rx="1" fill="#000000"/>
+
+  <!-- Base Legs -->
+  <path d="M19 54L16 58" stroke="#000000" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M45 54L48 58" stroke="#000000" stroke-width="3.5" stroke-linecap="round"/>
+</svg>

@@ -33,7 +33,7 @@ body {
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* ─── Scrollbar ─── */
@@ -108,50 +108,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .program-theme-shell::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.12;
-  mix-blend-mode: screen;
+  display: none;
 }
 
-.theme-texture-manga::after {
-  background-image:
-    linear-gradient(90deg, transparent 0 48%, var(--program-primary) 49% 51%, transparent 52% 100%),
-    linear-gradient(0deg, transparent 0 48%, var(--program-accent) 49% 51%, transparent 52% 100%),
-    radial-gradient(circle, var(--program-primary) 1px, transparent 1px);
-  background-size: 180px 120px, 180px 120px, 18px 18px;
-}
-
-.theme-texture-ring::after {
-  background-image:
-    linear-gradient(18deg, transparent 0 46%, var(--program-primary) 47% 49%, transparent 50% 100%),
-    linear-gradient(-18deg, transparent 0 46%, var(--program-accent) 47% 49%, transparent 50% 100%),
-    repeating-linear-gradient(90deg, transparent 0 68px, var(--program-primary) 69px 70px);
-  background-size: 240px 140px, 240px 140px, 180px 100%;
-}
-
-.theme-texture-signal::after {
-  background-image:
-    linear-gradient(var(--program-primary) 1px, transparent 1px),
-    linear-gradient(90deg, var(--program-primary) 1px, transparent 1px),
-    repeating-linear-gradient(0deg, transparent 0 7px, var(--program-accent) 8px 9px);
-  background-size: 52px 52px, 52px 52px, 100% 18px;
-}
-
-.theme-texture-packaging::after {
-  background-image:
-    repeating-linear-gradient(45deg, transparent 0 18px, var(--program-primary) 19px 20px),
-    radial-gradient(circle at 20% 30%, var(--program-accent) 1px, transparent 2px);
-  background-size: 90px 90px, 24px 24px;
-}
-
+.theme-texture-manga::after,
+.theme-texture-ring::after,
+.theme-texture-signal::after,
+.theme-texture-packaging::after,
 .theme-texture-cinema::after {
-  background-image:
-    repeating-linear-gradient(90deg, transparent 0 42px, var(--program-primary) 43px 44px),
-    repeating-linear-gradient(0deg, rgba(255,255,255,0.08) 0 1px, transparent 2px 6px);
-  background-size: 160px 100%, 100% 8px;
+  display: none;
 }
 
 .program-hero-poster {
@@ -216,7 +181,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ─── Lenis smooth scroll ─── */
-html.lenis {
+html.lenis, html.lenis body {
   height: auto;
 }
 .lenis.lenis-smooth {
@@ -224,4 +189,10 @@ html.lenis {
 }
 .lenis.lenis-smooth [data-lenis-prevent] {
   overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
 }

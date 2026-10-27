@@ -214,7 +214,7 @@ async function fetchInstagramStats() {
     console.warn('⚠️ [Instagram] Error al consultar:', err.message)
   }
 
-  return 45000
+  return 25500
 }
 
 /**
@@ -247,7 +247,7 @@ async function fetchTikTokStats() {
     console.warn('⚠️ [TikTok] Error al consultar:', err.message)
   }
 
-  return 52000
+  return 42500
 }
 
 /**
@@ -278,7 +278,7 @@ async function fetchFacebookStats() {
     console.warn('⚠️ [Facebook] Error al consultar:', err.message)
   }
 
-  return 48000
+  return 44000
 }
 
 /**
@@ -317,7 +317,7 @@ async function fetchAllMetrics() {
       suffix: '',
       color: '#E1306C',
       description: 'Alcance mensual de +140K con alto engagement diario en Reels, Stories y dinámicas del Dojo.',
-      url: `https://instagram.com/${CHANNELS.instagramHandle}`,
+      url: 'https://www.instagram.com/ninjahouseshow/?hl=es#',
     },
     {
       id: 'tiktok-followers',
@@ -339,7 +339,7 @@ async function fetchAllMetrics() {
       suffix: '',
       color: '#1877F2',
       description: 'Comunidad interactiva con constante interacción en publicaciones, debates y transmisiones.',
-      url: `https://facebook.com/${CHANNELS.facebookHandle}`,
+      url: 'https://www.facebook.com/NinjaHouseshow/followers/',
     },
   ]
 

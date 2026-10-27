@@ -32,11 +32,11 @@ export const metricsData: Metric[] = [
     "platform": "Instagram",
     "handle": "@ninjahouseshow",
     "label": "Seguidores",
-    "value": 45000,
+    "value": 25500,
     "suffix": "",
     "color": "#E1306C",
-    "description": "Alcance mensual de +140K con alto engagement diario en Reels, Stories y dinámicas del Dojo.",
-    "url": "https://instagram.com/ninjahouseshow"
+    "description": "Comunidad activa y fiel con alto engagement diario en Reels, Stories y dinámicas en vivo.",
+    "url": "https://www.instagram.com/ninjahouseshow/?hl=es#"
   },
   {
     "id": "tiktok-followers",
@@ -54,18 +54,18 @@ export const metricsData: Metric[] = [
     "platform": "Facebook",
     "handle": "NinjaHouseshow",
     "label": "Seguidores",
-    "value": 48000,
+    "value": 44000,
     "suffix": "",
     "color": "#1877F2",
     "description": "Comunidad interactiva con constante interacción en publicaciones, debates y transmisiones.",
-    "url": "https://facebook.com/NinjaHouseshow"
+    "url": "https://www.facebook.com/NinjaHouseshow/followers/"
   }
 ]
 
 export const globalMetrics = [
   {
     "label": "Seguidores en redes",
-    "value": 197400,
+    "value": 173900,
     "prefix": "+",
     "suffix": ""
   },

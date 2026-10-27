@@ -144,24 +144,33 @@ export const programThemes: Record<string, ProgramTheme> = {
     softGradient: 'linear-gradient(135deg, rgba(147,51,234,0.18), rgba(192,132,252,0.08), rgba(10,5,16,0.96))',
     textureClass: 'theme-texture-shadow',
     motif: 'Shadow mist / candle light / dark mystery files',
-    eyebrow: 'Misterio, crónicas y casos oscuros',
-    headline: 'Investigaciones, conspiraciones y enigmas que desafían la realidad.',
-    identity: 'Un viaje a lo desconocido: crónicas oscuras, casos paranormales, misterios sin resolver y leyendas urbanas en profundidad.',
-    atmosphere: 'Sombras profundas, velas tenues, acentos violetas y ambientación envolvente de misterio.',
-    ctaLabel: 'Explorar el Plan Oscuro',
-    sponsorLabel: 'Auspiciar Plan Oscuro',
-    visualTags: ['Misterio', 'Paranormal', 'Casos', 'Enigmas'],
+    eyebrow: 'Paranormal, misterio y espiritualidad',
+    headline: 'Fenómenos paranormales, terror y misterio desde lo espiritual e inexplicable.',
+    identity: 'Adriana Larrea (Mar de Luna) y Sandra (La Suma Sacerdotisa) analizan casos, leyendas, señales y experiencias que desafían la lógica.',
+    atmosphere: 'Sombras profundas, velas tenues, acentos violetas y conexión mística con lo desconocido.',
+    ctaLabel: 'Explorar El Plano Oscuro',
+    sponsorLabel: 'Auspiciar El Plano Oscuro',
+    visualTags: ['Paranormal', 'Misterio', 'Tarot', 'Espiritualidad', 'Leyendas'],
   },
 }
+
+// Slugs aliases mapping to the same theme
+programThemes['el-plano-oscuro'] = programThemes['plan-oscuro']
+programThemes['el-lado-oscuro'] = programThemes['plan-oscuro']
+programThemes['frikis-de-m'] = programThemes['frikisdem']
 
 export const fallbackProgramTheme = programThemes['cine-infarto']
 
 export const programLogoMap: Record<string, string> = {
-  'animes-y-ramen': '/assets/heroRamenIndex-removebg-preview.png',
-  overhead: '/assets/OVERHEAD_LOGO.png',
-  frikisdem: '/assets/FrikisDeM_Logo.png',
-  'freakuencia-m': '/assets/FrikisDeM_Logo.png',
-  'maldito-plastico': '/assets/MALDITOPLASTICO_LOGO.png',
-  'cine-infarto': '/assets/CINEINFARTO_LOGO.png',
-  'plan-oscuro': '/assets/PLAN_OSCURO_LOGO.webp',
+  'animes-y-ramen': '/assets/ANIMESRAMEN9PM.webp',
+  overhead: '/assets/OVERHEAD9PM.webp',
+  'over-head': '/assets/OVERHEAD9PM.webp',
+  frikisdem: '/assets/FRIKIS9PM.webp',
+  'frikis-de-m': '/assets/FRIKIS9PM.webp',
+  'freakuencia-m': '/assets/FRIKIS9PM.webp',
+  'maldito-plastico': '/assets/malditoPlastico.webp',
+  'cine-infarto': '/assets/CINEINFARTO9PM.webp',
+  'plan-oscuro': '/assets/ELPLANO9PM.webp',
+  'el-plano-oscuro': '/assets/ELPLANO9PM.webp',
+  'el-lado-oscuro': '/assets/ELPLANO9PM.webp',
 }

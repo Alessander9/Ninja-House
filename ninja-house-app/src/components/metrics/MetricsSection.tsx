@@ -72,9 +72,9 @@ function AnimatedCounter({ end, suffix, color }: { end: number; suffix: string; 
   }, [inView, end])
 
   const formattedNumber = count >= 1000000
-    ? `${(count / 1000000).toFixed(1)}M`
+    ? `${(count / 1000000).toFixed(1).replace('.', ',')}M`
     : count >= 10000
-    ? `${(count / 1000).toFixed(count % 1000 === 0 ? 0 : 1)}K`
+    ? `${(count / 1000).toFixed(count % 1000 === 0 ? 0 : 1).replace('.', ',')}K`
     : count.toLocaleString('es-ES')
 
   return (
@@ -180,9 +180,12 @@ export function MetricsSection() {
           {metrics.map((metric, i) => {
             const IconComponent = metricIcons[metric.id]
             return (
-              <motion.div
+              <motion.a
                 key={metric.id}
-                className="metric-card group relative"
+                href={metric.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="metric-card group relative block cursor-pointer"
                 whileHover={{ y: -8, scale: 1.04 }}
                 transition={{ type: 'spring', stiffness: 280, damping: 18 }}
               >
@@ -215,11 +218,19 @@ export function MetricsSection() {
                     {IconComponent && <IconComponent />}
                   </motion.div>
 
-                  {/* Platform label */}
-                  <div className="flex items-center justify-center lg:justify-start gap-1.5">
-                    <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: metric.color }} />
-                    <span className="text-xs font-display font-bold tracking-widest" style={{ color: `${metric.color}aa` }}>
-                      {metric.platform.toUpperCase()}
+                  {/* Platform label and link */}
+                  <div className="flex items-center justify-between w-full">
+                    <div className="flex items-center gap-1.5">
+                      <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: metric.color }} />
+                      <span className="text-xs font-display font-bold tracking-widest" style={{ color: `${metric.color}aa` }}>
+                        {metric.platform.toUpperCase()}
+                      </span>
+                    </div>
+                    <span
+                      className="text-xs font-semibold opacity-50 group-hover:opacity-100 transition-opacity"
+                      style={{ color: metric.color }}
+                    >
+                      ↗
                     </span>
                   </div>
 
@@ -234,7 +245,7 @@ export function MetricsSection() {
 
                   {/* Trend indicator */}
                   <div
-                    className="flex items-center justify-center lg:justify-start gap-1.5 mt-auto pt-3 border-t w-full"
+                    className="flex items-center justify-between mt-auto pt-3 border-t w-full"
                     style={{ borderColor: `${metric.color}18` }}
                   >
                     <motion.span
@@ -245,6 +256,12 @@ export function MetricsSection() {
                     >
                       ↑ Creciendo
                     </motion.span>
+                    <span
+                      className="text-xs font-display font-bold opacity-70 group-hover:opacity-100 transition-opacity"
+                      style={{ color: metric.color }}
+                    >
+                      Ver perfil
+                    </span>
                   </div>
 
                   {/* Hover glow overlay */}
@@ -259,7 +276,7 @@ export function MetricsSection() {
                     style={{ boxShadow: `inset 0 0 0 1px ${metric.color}50, 0 0 30px ${metric.color}20` }}
                   />
                 </div>
-              </motion.div>
+              </motion.a>
             )
           })}
         </div>
