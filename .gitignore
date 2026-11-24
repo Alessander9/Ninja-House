@@ -8,3 +8,8 @@
 .DS_Store
 IMG/
 NH - REBRAND/
+*.key
+*.crt
+deploy-ninja-house.zip
+deploy-ninja-house/
+
